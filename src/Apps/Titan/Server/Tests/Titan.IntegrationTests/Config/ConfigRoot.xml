@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+  <assemblies>
+  </assemblies>
+  <env>
+    <!--This section contains the environment data-->
+    <modules Directory="..\..\..\..\..\..\..\Modules\binaries" ShadowCopyDirectory="bin"
+             DeleteShadowDirectoryOnStartup="True" />
+    <plugins Directory="..\..\..\..\..\..\..\Plugins\binaries" ShadowCopyDirectory="bin"
+             DeleteShadowDirectoryOnStartup="True" />
+  </env>
+
+  <modules>
+    <!--This section contains Modules to be loaded to the appdomain-->
+    <module Type="Saturn72.Module.Ioc.Autofac.AutofacModule, Saturn72.Module.Ioc.Autofac" Active="true"
+            StartupOrder="10" StopOrder="100" />
+  </modules>
+
+  <!--this element contains the configuration mapping file relative path-->
+  <configMaps Path="Config\ConfigMaps.xml" />
+</config>

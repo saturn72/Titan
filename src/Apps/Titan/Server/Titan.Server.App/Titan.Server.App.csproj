@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74BABAF4-4B6E-4285-B4FA-B4EA58A18BC9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Titan.Server.App</RootNamespace>
+    <AssemblyName>Titan.Server.App</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Host.HttpListener.3.0.1\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Saturn72.Module.Owin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Modules\Saturn72.Module.Owin\Saturn72.Module.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Module.Ioc.Autofac.Owin.dll.config" />
+    <None Include="Modules\Saturn72.Module.Ioc.Autofac\Saturn72.Module.Ioc.Autofac.dll.config" />
+    <None Include="Modules\Saturn72.Module.Owin\Saturn72.Module.Owin.dll.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Core\Saturn72.Core\Saturn72.Core.csproj">
+      <Project>{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC}</Project>
+      <Name>Saturn72.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Titan.Framework\Titan.Framework.csproj">
+      <Project>{C0A77928-8710-40CD-A1C1-537D5F0BF2F9}</Project>
+      <Name>Titan.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Titan.WebApi\Titan.WebApi.csproj">
+      <Project>{0D363DDA-A380-4A68-9049-FE72A77C18A8}</Project>
+      <Name>Titan.WebApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\ConfigMaps.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\ConfigMaps\OwinConfigMap.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\ConfigRoot.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Autofac.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Autofac.Integration.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Autofac.Integration.WebApi.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Autofac.Integration.WebApi.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Microsoft.AspNet.Identity.Core.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Microsoft.AspNet.Identity.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Microsoft.Owin.Cors.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Microsoft.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Microsoft.Owin.Hosting.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Microsoft.Owin.Security.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Microsoft.Owin.Security.Facebook.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Microsoft.Owin.Security.Google.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Microsoft.Owin.Security.OAuth.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Newtonsoft.Json.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Core.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Core.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Core.Services.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Core.Services.Impl.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Core.Services.Impl.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Core.Services.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Extensions.Data.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Extensions.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Module.Ioc.Autofac.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Module.Ioc.Autofac.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Module.Ioc.Autofac.Owin.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Module.Ioc.Autofac.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Module.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Module.Owin.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\Saturn72.Utils.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\System.Net.Http.Formatting.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\System.Web.Http.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\System.Web.Http.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac.Owin\System.Web.Http.WebHost.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\Autofac.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\Autofac.Integration.WebApi.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\Newtonsoft.Json.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\Saturn72.Core.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\Saturn72.Core.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\Saturn72.Extensions.Data.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\Saturn72.Extensions.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\Saturn72.Module.Ioc.Autofac.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\Saturn72.Module.Ioc.Autofac.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\Saturn72.Utils.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\System.Net.Http.Formatting.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Ioc.Autofac\System.Web.Http.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.AspNet.Identity.Core.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.AspNet.Identity.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.Owin.Cors.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.Owin.Host.HttpListener.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.Owin.Host.SystemWeb.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.Owin.Hosting.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.Owin.Security.Cookies.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.Owin.Security.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.Owin.Security.Facebook.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.Owin.Security.Google.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Microsoft.Owin.Security.OAuth.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Newtonsoft.Json.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Core.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Core.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Core.Services.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Core.Services.Impl.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Core.Services.Impl.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Core.Services.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Extensions.Data.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Extensions.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Module.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Module.Owin.pdb" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\Saturn72.Utils.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\System.Net.Http.Formatting.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\System.Web.Cors.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\System.Web.Http.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\System.Web.Http.Owin.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Saturn72.Module.Owin\System.Web.Http.WebHost.dll" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
