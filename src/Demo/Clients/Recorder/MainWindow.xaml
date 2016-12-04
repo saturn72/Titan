@@ -1,0 +1,17 @@
+﻿<Window x:Class="Recorder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Recorder"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="525">
+    <Grid>
+        <Button x:Name="btnLaunchNotepad" Content="Launch Notepad" HorizontalAlignment="Left" Margin="37,30,0,0" VerticalAlignment="Top" Width="418" Click="btnLaunchNotepad_Click"/>
+        <TextBox x:Name="tbContent" HorizontalAlignment="Left" Height="106" Margin="37,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="234"/>
+        <Button x:Name="btnWriteContent" Content="Write Content" HorizontalAlignment="Left" Margin="295,115,0,0" VerticalAlignment="Top" Width="160" Click="btnWriteContent_Click"/>
+        <Button x:Name="btnSave" Content="Save Document" HorizontalAlignment="Left" Margin="37,261,0,0" VerticalAlignment="Top" Width="418" Click="btnSave_Click"/>
+        <Button x:Name="btnGenerate" Content="Generate" HorizontalAlignment="Left" Margin="37,345,0,0" VerticalAlignment="Top" Width="418" Click="btnGenerate_Click" Height="60"/>
+
+    </Grid>
+</Window>
