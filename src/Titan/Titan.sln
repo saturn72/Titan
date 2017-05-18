@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework", "Titan.Framework\Titan.Framework.csproj", "{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Saturn72", "Saturn72", "{DC499E4A-694D-4532-98C5-DEE61AA57292}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core", "..\..\submodules\saturn72\src\Core\Saturn72.Core\Saturn72.Core.csproj", "{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core.Tests", "..\..\submodules\saturn72\src\Core\Saturn72.Core.Tests\Saturn72.Core.Tests.csproj", "{7BAB262A-0F0A-4CFD-A642-4E643E619CB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Common", "..\..\submodules\saturn72\src\Common\Saturn72.Common\Saturn72.Common.csproj", "{6DE3E33E-0B13-4C57-8871-C83E1EEB8470}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Common.Tests", "..\..\submodules\saturn72\src\Common\Saturn72.Common.Tests\Saturn72.Common.Tests.csproj", "{91616394-F119-49FD-B751-28F64120A154}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core.Services", "..\..\submodules\saturn72\src\Core\Saturn72.Core.Services\Saturn72.Core.Services.csproj", "{D92341E7-6B28-4CDC-A024-A204D0ED670E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core.Services.Impl", "..\..\submodules\saturn72\src\Core\Saturn72.Core.Services.Impl\Saturn72.Core.Services.Impl.csproj", "{BA702041-080D-459A-BCD1-37875D92C626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core.Services.Impl.Tests", "..\..\submodules\saturn72\src\Core\Saturn72.Core.Services.Impl.Tests\Saturn72.Core.Services.Impl.Tests.csproj", "{AC816B2D-3B7D-49CC-8D71-2A19938087AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core.Services.Tests", "..\..\submodules\saturn72\src\Core\Saturn72.Core.Services.Tests\Saturn72.Core.Services.Tests.csproj", "{ACC0224C-2469-451B-AA44-41530E9FF36F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BAB262A-0F0A-4CFD-A642-4E643E619CB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BAB262A-0F0A-4CFD-A642-4E643E619CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BAB262A-0F0A-4CFD-A642-4E643E619CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BAB262A-0F0A-4CFD-A642-4E643E619CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DE3E33E-0B13-4C57-8871-C83E1EEB8470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DE3E33E-0B13-4C57-8871-C83E1EEB8470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DE3E33E-0B13-4C57-8871-C83E1EEB8470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DE3E33E-0B13-4C57-8871-C83E1EEB8470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91616394-F119-49FD-B751-28F64120A154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91616394-F119-49FD-B751-28F64120A154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91616394-F119-49FD-B751-28F64120A154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91616394-F119-49FD-B751-28F64120A154}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D92341E7-6B28-4CDC-A024-A204D0ED670E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D92341E7-6B28-4CDC-A024-A204D0ED670E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D92341E7-6B28-4CDC-A024-A204D0ED670E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D92341E7-6B28-4CDC-A024-A204D0ED670E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA702041-080D-459A-BCD1-37875D92C626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA702041-080D-459A-BCD1-37875D92C626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA702041-080D-459A-BCD1-37875D92C626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA702041-080D-459A-BCD1-37875D92C626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC816B2D-3B7D-49CC-8D71-2A19938087AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC816B2D-3B7D-49CC-8D71-2A19938087AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC816B2D-3B7D-49CC-8D71-2A19938087AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC816B2D-3B7D-49CC-8D71-2A19938087AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACC0224C-2469-451B-AA44-41530E9FF36F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACC0224C-2469-451B-AA44-41530E9FF36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACC0224C-2469-451B-AA44-41530E9FF36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACC0224C-2469-451B-AA44-41530E9FF36F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
+		{7BAB262A-0F0A-4CFD-A642-4E643E619CB3} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
+		{6DE3E33E-0B13-4C57-8871-C83E1EEB8470} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
+		{91616394-F119-49FD-B751-28F64120A154} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
+		{D92341E7-6B28-4CDC-A024-A204D0ED670E} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
+		{BA702041-080D-459A-BCD1-37875D92C626} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
+		{AC816B2D-3B7D-49CC-8D71-2A19938087AF} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
+		{ACC0224C-2469-451B-AA44-41530E9FF36F} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
+	EndGlobalSection
+EndGlobal
