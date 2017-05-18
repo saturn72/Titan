@@ -8,6 +8,7 @@ namespace Titan.Framework.Tests.Testing
     public class TestSuiteContextExtensionsTests
     {
         [Test]
+        [Category("non_deterministic")]
         public void TestSuiteContext_CurrentTestContext()
         {
             TestSuiteContext.Create();

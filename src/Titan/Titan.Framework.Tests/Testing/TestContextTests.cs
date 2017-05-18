@@ -11,6 +11,7 @@ namespace Titan.Framework.Tests.Testing
     public class TestContextTests
     {
         [Test]
+        [Category("non_deterministic")]
         public void TestContext_CreateInstance()
         {
             TestSuiteContext.Create();
