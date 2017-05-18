@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{39D1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Tests", "Samples\Sample.Tests\Sample.Tests.csproj", "{403D79F5-1661-42E6-BF0A-3EB4A004D072}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.Tests", "Titan.Framework.Tests\Titan.Framework.Tests.csproj", "{007EB5A6-A379-4FC7-91E8-8232DFCEBE27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{403D79F5-1661-42E6-BF0A-3EB4A004D072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{403D79F5-1661-42E6-BF0A-3EB4A004D072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{403D79F5-1661-42E6-BF0A-3EB4A004D072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{007EB5A6-A379-4FC7-91E8-8232DFCEBE27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{007EB5A6-A379-4FC7-91E8-8232DFCEBE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{007EB5A6-A379-4FC7-91E8-8232DFCEBE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{007EB5A6-A379-4FC7-91E8-8232DFCEBE27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
