@@ -1,7 +1,7 @@
 ﻿
 using System;
-using Saturn72.Common.App.Events;
 using Saturn72.Core.Services.Events;
+using Saturn72.Core.Services.App.Events;
 using Titan.Framework.App;
 using Titan.Framework.Lifetime;
 

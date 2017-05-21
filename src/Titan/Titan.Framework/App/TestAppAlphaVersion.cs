@@ -1,4 +1,4 @@
-﻿using Saturn72.Common.App;
+﻿using Saturn72.Core.Services.App;
 
 namespace Titan.Framework.App
 {
