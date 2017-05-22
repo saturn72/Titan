@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Saturn72.Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Saturn72.Extensions.1.2.0\lib\net462\Saturn72.Extensions.dll</HintPath>
     </Reference>
@@ -39,6 +47,8 @@
   <ItemGroup>
     <Compile Include="App\TestApp.cs" />
     <Compile Include="App\TestAppAlphaVersion.cs" />
+    <Compile Include="Exceptions\AutomationException.cs" />
+    <Compile Include="Infrastructure\DependencyRegistrar.cs" />
     <Compile Include="Lifetime\Events\OnTestContextCreatedEvent.cs" />
     <Compile Include="Lifetime\Events\OnTestContextDisposedEvent.cs" />
     <Compile Include="Lifetime\Events\OnTestContextExecutionEndEvent.cs" />
@@ -55,6 +65,8 @@
     <Compile Include="Lifetime\Events\OnTestSuiteDisposedEvent.cs" />
     <Compile Include="Lifetime\Events\OnTestSuiteExecutionEndEvent.cs" />
     <Compile Include="Lifetime\Events\OnTestSuiteExecutionStartEvent.cs" />
+    <Compile Include="Lifetime\Interceptors\InvocationUtil.cs" />
+    <Compile Include="Lifetime\Interceptors\TestContextInterceptor.cs" />
     <Compile Include="Lifetime\TestLifetimeManager.cs" />
     <Compile Include="Lifetime\TestLifetimePublisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

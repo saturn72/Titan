@@ -59,7 +59,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Titan.Framework\Titan.Framework.csproj">
+    <ProjectReference Include="..\..\Titan.Framework\Titan.Framework.csproj">
       <Project>{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}</Project>
       <Name>Titan.Framework</Name>
     </ProjectReference>
