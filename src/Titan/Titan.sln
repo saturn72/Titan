@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework", "Titan.Framework\Titan.Framework.csproj", "{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}"
 EndProject
@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core.Tests", "..\.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Common", "..\..\submodules\saturn72\src\Common\Saturn72.Common\Saturn72.Common.csproj", "{6DE3E33E-0B13-4C57-8871-C83E1EEB8470}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Common.Tests", "..\..\submodules\saturn72\src\Common\Saturn72.Common.Tests\Saturn72.Common.Tests.csproj", "{91616394-F119-49FD-B751-28F64120A154}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core.Services", "..\..\submodules\saturn72\src\Core\Saturn72.Core.Services\Saturn72.Core.Services.csproj", "{D92341E7-6B28-4CDC-A024-A204D0ED670E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core.Services.Impl", "..\..\submodules\saturn72\src\Core\Saturn72.Core.Services.Impl\Saturn72.Core.Services.Impl.csproj", "{BA702041-080D-459A-BCD1-37875D92C626}"
@@ -23,11 +21,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core.Services.Impl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core.Services.Tests", "..\..\submodules\saturn72\src\Core\Saturn72.Core.Services.Tests\Saturn72.Core.Services.Tests.csproj", "{ACC0224C-2469-451B-AA44-41530E9FF36F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{39D1ED19-9217-4896-A3D9-5F879073D025}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Tests", "Samples\Sample.Tests\Sample.Tests.csproj", "{403D79F5-1661-42E6-BF0A-3EB4A004D072}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.Tests", "Titan.Framework.Tests\Titan.Framework.Tests.csproj", "{007EB5A6-A379-4FC7-91E8-8232DFCEBE27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests", "Titan.Framework.SystemTests\Titan.Framework.SystemTests.csproj", "{0C8E2CDF-D18C-4AC0-9C1B-9B094132FCF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{D8ADDAFC-FCD5-4FF9-B9B4-876F2D0E02F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Module.Ioc.Autofac", "..\..\submodules\saturn72\src\Modules\Ioc\Autofac\Saturn72.Module.Ioc.Autofac\Saturn72.Module.Ioc.Autofac.csproj", "{E78561F2-234A-43BA-86B8-4F715C47BCD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Module.Ioc.Autofac.Tests", "..\..\submodules\saturn72\src\Modules\Ioc\Autofac\Saturn72.Module.Autofact.Tests\Saturn72.Module.Ioc.Autofac.Tests.csproj", "{E3E17CF0-2AB6-44C3-8F7D-9EDB5FD9F05E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +53,6 @@ Global
 		{6DE3E33E-0B13-4C57-8871-C83E1EEB8470}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DE3E33E-0B13-4C57-8871-C83E1EEB8470}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DE3E33E-0B13-4C57-8871-C83E1EEB8470}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91616394-F119-49FD-B751-28F64120A154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91616394-F119-49FD-B751-28F64120A154}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91616394-F119-49FD-B751-28F64120A154}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91616394-F119-49FD-B751-28F64120A154}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D92341E7-6B28-4CDC-A024-A204D0ED670E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D92341E7-6B28-4CDC-A024-A204D0ED670E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D92341E7-6B28-4CDC-A024-A204D0ED670E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -71,14 +69,22 @@ Global
 		{ACC0224C-2469-451B-AA44-41530E9FF36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACC0224C-2469-451B-AA44-41530E9FF36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACC0224C-2469-451B-AA44-41530E9FF36F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{403D79F5-1661-42E6-BF0A-3EB4A004D072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{403D79F5-1661-42E6-BF0A-3EB4A004D072}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{403D79F5-1661-42E6-BF0A-3EB4A004D072}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{403D79F5-1661-42E6-BF0A-3EB4A004D072}.Release|Any CPU.Build.0 = Release|Any CPU
 		{007EB5A6-A379-4FC7-91E8-8232DFCEBE27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{007EB5A6-A379-4FC7-91E8-8232DFCEBE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{007EB5A6-A379-4FC7-91E8-8232DFCEBE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{007EB5A6-A379-4FC7-91E8-8232DFCEBE27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C8E2CDF-D18C-4AC0-9C1B-9B094132FCF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8E2CDF-D18C-4AC0-9C1B-9B094132FCF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8E2CDF-D18C-4AC0-9C1B-9B094132FCF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8E2CDF-D18C-4AC0-9C1B-9B094132FCF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E78561F2-234A-43BA-86B8-4F715C47BCD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E78561F2-234A-43BA-86B8-4F715C47BCD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E78561F2-234A-43BA-86B8-4F715C47BCD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E78561F2-234A-43BA-86B8-4F715C47BCD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3E17CF0-2AB6-44C3-8F7D-9EDB5FD9F05E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3E17CF0-2AB6-44C3-8F7D-9EDB5FD9F05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3E17CF0-2AB6-44C3-8F7D-9EDB5FD9F05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3E17CF0-2AB6-44C3-8F7D-9EDB5FD9F05E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,11 +93,12 @@ Global
 		{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
 		{7BAB262A-0F0A-4CFD-A642-4E643E619CB3} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
 		{6DE3E33E-0B13-4C57-8871-C83E1EEB8470} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
-		{91616394-F119-49FD-B751-28F64120A154} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
 		{D92341E7-6B28-4CDC-A024-A204D0ED670E} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
 		{BA702041-080D-459A-BCD1-37875D92C626} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
 		{AC816B2D-3B7D-49CC-8D71-2A19938087AF} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
 		{ACC0224C-2469-451B-AA44-41530E9FF36F} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
-		{403D79F5-1661-42E6-BF0A-3EB4A004D072} = {39D1ED19-9217-4896-A3D9-5F879073D025}
+		{D8ADDAFC-FCD5-4FF9-B9B4-876F2D0E02F1} = {DC499E4A-694D-4532-98C5-DEE61AA57292}
+		{E78561F2-234A-43BA-86B8-4F715C47BCD6} = {D8ADDAFC-FCD5-4FF9-B9B4-876F2D0E02F1}
+		{E3E17CF0-2AB6-44C3-8F7D-9EDB5FD9F05E} = {D8ADDAFC-FCD5-4FF9-B9B4-876F2D0E02F1}
 	EndGlobalSection
 EndGlobal
