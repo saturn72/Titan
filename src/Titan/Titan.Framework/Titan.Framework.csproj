@@ -67,6 +67,7 @@
     <Compile Include="Lifetime\Events\OnTestSuiteExecutionStartEvent.cs" />
     <Compile Include="Lifetime\Interceptors\InvocationUtil.cs" />
     <Compile Include="Lifetime\Interceptors\TestContextInterceptor.cs" />
+    <Compile Include="Lifetime\Interceptors\TestContextStepInterceptor.cs" />
     <Compile Include="Lifetime\TestLifetimeManager.cs" />
     <Compile Include="Lifetime\TestLifetimePublisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

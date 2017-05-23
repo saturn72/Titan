@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Castle.Core.Internal;
+using Castle.DynamicProxy;
 using Saturn72.Core.Configuration;
 using Saturn72.Core.Infrastructure.AppDomainManagement;
 using Saturn72.Core.Infrastructure.DependencyManagement;
@@ -22,21 +22,10 @@ namespace Titan.Framework.Infrastructure
         {
             return reg =>
             {
-                reg.RegisterInstance(new TestContextInterceptor());
-                var testLogicMethodInfos = typeFinder.FindMethodsOfReturnType<IEnumerable<ExecutionResult>>();
+                RegisterInterceptors(reg, typeFinder, config);
 
-                var err = ValidateThatAllMethodsAreVirtualOrImplementInterface(testLogicMethodInfos);
-                if (err.HasValue())
-                    throw new AutomationException(
-                        "Interceptor registration failure. Interception can only work on virtual or interface implementation.\nPlease refactor the following types: " +
-                        err);
                 /*
                  * 
-            var testtypes = typeFinder.FindClassesOfType<ITestLogic>();
-
-            foreach (var tt in testtypes)
-                reg.RegisterType(tt, LifeCycle.PerDependency, new[] {typeof(TestContextInterceptor)});
-
             reg.RegisterInstance(new TestContextStepInterceptor());
             reg.RegisterType<NgPump, IPumpCommander>(LifeCycle.PerDependency,
                 interceptorTypes: new[] {typeof(TestContextStepInterceptor)});
@@ -53,7 +42,29 @@ namespace Titan.Framework.Infrastructure
             };
         }
 
-        private string ValidateThatAllMethodsAreVirtualOrImplementInterface(IEnumerable<MethodInfo> methodInfos)
+        private void RegisterInterceptors(IIocRegistrator reg, ITypeFinder typeFinder, Saturn72Config config)
+        {
+            reg.RegisterInstance(new TestContextInterceptor());
+            FindTypesByMethodReturnValueAndRegisterInterceptor<IEnumerable<ExecutionResult>, TestContextInterceptor>(
+                reg, typeFinder);
+
+            reg.RegisterInstance(new TestContextStepInterceptor());
+            FindTypesByMethodReturnValueAndRegisterInterceptor<ExecutionResult, TestContextStepInterceptor>(reg,
+                typeFinder);
+        }
+
+        private void FindTypesByMethodReturnValueAndRegisterInterceptor<TReturned, TInterceptor>(IIocRegistrator reg,
+            ITypeFinder typeFinder)
+            where TInterceptor : IInterceptor
+        {
+            var testLogicMethodInfos = typeFinder.FindMethodsOfReturnType<TReturned>();
+
+            ValidateThatAllMethodsAreVirtualOrImplementInterface(testLogicMethodInfos);
+            var declarTypes = testLogicMethodInfos.Select(bi => bi.DeclaringType).Distinct();
+            declarTypes.ForEachItem(dt => reg.RegisterType(dt, LifeCycle.PerDependency, new[] {typeof(TInterceptor)}));
+        }
+
+        private void ValidateThatAllMethodsAreVirtualOrImplementInterface(IEnumerable<MethodInfo> methodInfos)
         {
             var sb = new StringBuilder();
 
@@ -69,7 +80,10 @@ namespace Titan.Framework.Infrastructure
                 sb.AppendLine(mi.DeclaringType + "." + mi.Name);
             }
 
-            return sb.ToString();
+            if (sb.Length > 0)
+                throw new AutomationException(
+                    "Interceptor registration failure. Interception can only work on virtual or interface implementation.\nPlease refactor the following types: " +
+                    sb);
         }
 
         private bool IsSameMethodSignature(MethodInfo left, MethodInfo right)
