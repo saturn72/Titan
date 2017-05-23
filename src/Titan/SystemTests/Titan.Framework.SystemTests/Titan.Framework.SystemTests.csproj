@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleTests.cs" />
+    <Compile Include="ValidateRuntimeEvents.cs" />
     <Compile Include="TestObjects\SystemTestEventListener.cs" />
   </ItemGroup>
   <ItemGroup>

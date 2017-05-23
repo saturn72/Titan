@@ -4,16 +4,20 @@ using Shouldly;
 using Titan.Framework.Runtime;
 using Titan.Framework.Testing;
 using NUnit.Framework;
+using Titan.Framework.Exceptions;
 
 namespace Titan.Framework.SystemTests.Throws3
 {
-    public class SampleTests
+    public class TestStepMethodHasNoInterfaceImplemenation
     {
         [Test]
         public void ShouldThrowExceptionOnNonVirtualWithoutInterfaceImplementation()
         {
-            Should.Throw<TypeInitializationException>(
+            var ex = Should.Throw<TypeInitializationException>(
                 () => new SimpleTestStepLogic());
+            var innerException = ex.InnerException;
+            innerException.ShouldBeOfType<AutomationException>();
+            innerException.Message.ShouldNotContain("Failed to find test logic component");
         }
     }
 
@@ -28,6 +32,15 @@ namespace Titan.Framework.SystemTests.Throws3
             throw new NotImplementedException();
         }
     }
+
+    public class SimpleTestLogic
+    {
+        public virtual IEnumerable<ExecutionResult> ShouldThrowNonVirtualException()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 
     public interface ISimpleTestStepLogic
     {

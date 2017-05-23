@@ -41,6 +41,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests.Throws4", "SystemTests\Titan.Framework.SystemTests.Throws4\Titan.Framework.SystemTests.Throws4.csproj", "{15C1B963-2742-4DC8-9073-831DC1FDFC50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests.Throws5", "SystemTests\Titan.Framework.SystemTests.Throw5\Titan.Framework.SystemTests.Throws5.csproj", "{38F22E95-BE7B-423D-9753-3D755AB69196}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests.Throws6", "SystemTests\Titan.Framework.SystemTests.Throws6\Titan.Framework.SystemTests.Throws6.csproj", "{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,14 @@ Global
 		{15C1B963-2742-4DC8-9073-831DC1FDFC50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15C1B963-2742-4DC8-9073-831DC1FDFC50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15C1B963-2742-4DC8-9073-831DC1FDFC50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38F22E95-BE7B-423D-9753-3D755AB69196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38F22E95-BE7B-423D-9753-3D755AB69196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38F22E95-BE7B-423D-9753-3D755AB69196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38F22E95-BE7B-423D-9753-3D755AB69196}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,5 +143,7 @@ Global
 		{57CD8C1A-81EA-4455-9834-9D1F28EA763A} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
 		{75A35218-210C-40CF-8522-ED059D5CAD26} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
 		{15C1B963-2742-4DC8-9073-831DC1FDFC50} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
+		{38F22E95-BE7B-423D-9753-3D755AB69196} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
+		{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
 	EndGlobalSection
 EndGlobal

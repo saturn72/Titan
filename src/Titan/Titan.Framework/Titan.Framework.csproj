@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="App\TestApp.cs" />
     <Compile Include="App\TestAppAlphaVersion.cs" />
+    <Compile Include="CommandAndQuery\ICommander.cs" />
     <Compile Include="Exceptions\AutomationException.cs" />
     <Compile Include="Infrastructure\DependencyRegistrar.cs" />
     <Compile Include="Lifetime\Events\OnTestContextCreatedEvent.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Lifetime\Interceptors\InvocationUtil.cs" />
     <Compile Include="Lifetime\Interceptors\TestContextInterceptor.cs" />
     <Compile Include="Lifetime\Interceptors\TestContextStepInterceptor.cs" />
+    <Compile Include="Lifetime\Interceptors\TestContextStepPartInterceptor.cs" />
     <Compile Include="Lifetime\TestLifetimeManager.cs" />
     <Compile Include="Lifetime\TestLifetimePublisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

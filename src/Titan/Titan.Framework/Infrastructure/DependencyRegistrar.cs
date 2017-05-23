@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -8,6 +9,7 @@ using Saturn72.Core.Configuration;
 using Saturn72.Core.Infrastructure.AppDomainManagement;
 using Saturn72.Core.Infrastructure.DependencyManagement;
 using Saturn72.Extensions;
+using Titan.Framework.CommandAndQuery;
 using Titan.Framework.Exceptions;
 using Titan.Framework.Lifetime.Interceptors;
 using Titan.Framework.Runtime;
@@ -51,17 +53,40 @@ namespace Titan.Framework.Infrastructure
             reg.RegisterInstance(new TestContextStepInterceptor());
             FindTypesByMethodReturnValueAndRegisterInterceptor<ExecutionResult, TestContextStepInterceptor>(reg,
                 typeFinder);
+
+            reg.RegisterInstance(new TestStepPartInterceptor());
+
+            var commanderTypes = typeFinder.FindClassesOfType<ICommander>();
+            commanderTypes.ForEachItem(
+                c => reg.RegisterType(c, LifeCycle.PerDependency, new[] {typeof(TestStepPartInterceptor)}));
         }
 
-        private void FindTypesByMethodReturnValueAndRegisterInterceptor<TReturned, TInterceptor>(IIocRegistrator reg,
-            ITypeFinder typeFinder)
+        private void FindTypesByMethodReturnValueAndRegisterInterceptor<TReturned, TInterceptor>(IIocRegistrator reg, ITypeFinder typeFinder)
             where TInterceptor : IInterceptor
         {
-            var testLogicMethodInfos = typeFinder.FindMethodsOfReturnType<TReturned>();
+            var methodInfos = GetMethodInfos<TReturned>(typeFinder);
+            if (!methodInfos.Any())
+                throw new AutomationException(
+                    "Failed to find test logic component. Please validate you have instance of an object with methods that retuns the type " +
+                    typeof(TReturned));
 
-            ValidateThatAllMethodsAreVirtualOrImplementInterface(testLogicMethodInfos);
-            var declarTypes = testLogicMethodInfos.Select(bi => bi.DeclaringType).Distinct();
+            ValidateThatAllMethodsAreVirtualOrImplementInterface(methodInfos);
+            var declarTypes = methodInfos.Select(bi => bi.DeclaringType).Distinct();
             declarTypes.ForEachItem(dt => reg.RegisterType(dt, LifeCycle.PerDependency, new[] {typeof(TInterceptor)}));
+        }
+
+        private static IEnumerable<MethodInfo> GetMethodInfos<TReturned>(ITypeFinder typeFinder)
+        {
+            var methodInfos = typeFinder.FindMethodsOfReturnType<TReturned>().ToList();
+            //remove interception from get accessor od properties
+            var propGetters = new List<MethodInfo>();
+            foreach (var mi in methodInfos)
+            {
+                if (mi.DeclaringType.GetProperties().Any(p => p.GetGetMethod() == mi))
+                    propGetters.Add(mi);
+            }
+            propGetters.ForEach(pg => methodInfos.Remove(pg));
+            return methodInfos;
         }
 
         private void ValidateThatAllMethodsAreVirtualOrImplementInterface(IEnumerable<MethodInfo> methodInfos)

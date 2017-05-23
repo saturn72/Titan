@@ -6,7 +6,7 @@ using Titan.Framework.Testing;
 
 namespace Titan.Framework.SystemTests
 {
-    public class SampleTests
+    public class ValidateRuntimeEvents
     {
         [Test]
         public void SimpleTest()
