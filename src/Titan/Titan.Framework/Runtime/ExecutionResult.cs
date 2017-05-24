@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Titan.Framework.Pump;
+using Titan.Framework.Testing;
 using Titan.Framework.Validation;
 
 namespace Titan.Framework.Runtime
@@ -9,14 +9,14 @@ namespace Titan.Framework.Runtime
     {
         private readonly string _description;
 
-        private readonly PumpOptionsBase _pumpOptions;
+        private readonly TestStepOptionsBase _testStepOptions;
         private ICollection<ExecutionResultStep> _executionResultStep;
         private ICollection<ValidationStep> _validationSteps;
 
-        public ExecutionResult(string description, PumpOptionsBase pumpOptions)
+        public ExecutionResult(string description, TestStepOptionsBase testStepOptions)
         {
             _description = description;
-            _pumpOptions = pumpOptions;
+            _testStepOptions = testStepOptions;
         }
 
         public bool HasErrors
@@ -39,9 +39,9 @@ namespace Titan.Framework.Runtime
             get { return _description; }
         }
 
-        public PumpOptionsBase PumpOptions
+        public TestStepOptionsBase TestStepOptions
         {
-            get { return _pumpOptions; }
+            get { return _testStepOptions; }
         }
 
         public virtual ICollection<ExecutionResultStep> ExecutionResultSteps

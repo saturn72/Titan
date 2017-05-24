@@ -1,9 +1,9 @@
 ﻿
 using System.Collections.Generic;
 
-namespace Titan.Framework.Pump
+namespace Titan.Framework.Testing
 {
-    public abstract class PumpOptionsBase
+    public abstract class TestStepOptionsBase
     {
         private IDictionary<string, object> _paramters;
 

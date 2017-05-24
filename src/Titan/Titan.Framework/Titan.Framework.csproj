@@ -73,7 +73,7 @@
     <Compile Include="Lifetime\TestLifetimeManager.cs" />
     <Compile Include="Lifetime\TestLifetimePublisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Pump\PumpOptionsBase.cs" />
+    <Compile Include="Testing\TestStepOptionsBase.cs" />
     <Compile Include="Runtime\ExecutionResult.cs" />
     <Compile Include="Runtime\ExecutionResultExtensions.cs" />
     <Compile Include="Runtime\ExecutionResultStep.cs" />

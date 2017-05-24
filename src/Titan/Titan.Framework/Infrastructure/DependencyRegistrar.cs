@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -22,29 +21,10 @@ namespace Titan.Framework.Infrastructure
 
         public Action<IIocRegistrator> RegistrationLogic(ITypeFinder typeFinder, Saturn72Config config)
         {
-            return reg =>
-            {
-                RegisterInterceptors(reg, typeFinder, config);
-
-                /*
-                 * 
-            reg.RegisterInstance(new TestContextStepInterceptor());
-            reg.RegisterType<NgPump, IPumpCommander>(LifeCycle.PerDependency,
-                interceptorTypes: new[] {typeof(TestContextStepInterceptor)});
-
-
-            reg.RegisterInstance(new TestStepPartInterceptor());
-            reg.RegisterDelegate(resolver =>
-                {
-                    var tc = TestSuiteContext.Instance.CurrentTestContext();
-                    var labManager = resolver.Resolve<ILabManager>();
-                    return labManager.GetPumpCommander(tc.ExecutionId, tc.Tags).UiCommander;
-                }, LifeCycle.PerLifetime,
-                new[] {typeof(TestStepPartInterceptor)});*/
-            };
+            return reg => { RegisterInterceptors(reg, typeFinder); };
         }
 
-        private void RegisterInterceptors(IIocRegistrator reg, ITypeFinder typeFinder, Saturn72Config config)
+        private void RegisterInterceptors(IIocRegistrator reg, ITypeFinder typeFinder)
         {
             reg.RegisterInstance(new TestContextInterceptor());
             FindTypesByMethodReturnValueAndRegisterInterceptor<IEnumerable<ExecutionResult>, TestContextInterceptor>(
@@ -61,7 +41,8 @@ namespace Titan.Framework.Infrastructure
                 c => reg.RegisterType(c, LifeCycle.PerDependency, new[] {typeof(TestStepPartInterceptor)}));
         }
 
-        private void FindTypesByMethodReturnValueAndRegisterInterceptor<TReturned, TInterceptor>(IIocRegistrator reg, ITypeFinder typeFinder)
+        private void FindTypesByMethodReturnValueAndRegisterInterceptor<TReturned, TInterceptor>(IIocRegistrator reg,
+            ITypeFinder typeFinder)
             where TInterceptor : IInterceptor
         {
             var methodInfos = GetMethodInfos<TReturned>(typeFinder);
@@ -72,7 +53,9 @@ namespace Titan.Framework.Infrastructure
 
             ValidateThatAllMethodsAreVirtualOrImplementInterface(methodInfos);
             var declarTypes = methodInfos.Select(bi => bi.DeclaringType).Distinct();
-            declarTypes.ForEachItem(dt => reg.RegisterType(dt, LifeCycle.PerDependency, new[] {typeof(TInterceptor)}));
+            var interceptorTypes = new[] { typeof(TInterceptor) };
+            declarTypes.ForEachItem(dt =>
+                reg.RegisterType(dt, LifeCycle.PerDependency, interceptorTypes));
         }
 
         private static IEnumerable<MethodInfo> GetMethodInfos<TReturned>(ITypeFinder typeFinder)
@@ -81,10 +64,8 @@ namespace Titan.Framework.Infrastructure
             //remove interception from get accessor od properties
             var propGetters = new List<MethodInfo>();
             foreach (var mi in methodInfos)
-            {
                 if (mi.DeclaringType.GetProperties().Any(p => p.GetGetMethod() == mi))
                     propGetters.Add(mi);
-            }
             propGetters.ForEach(pg => methodInfos.Remove(pg));
             return methodInfos;
         }

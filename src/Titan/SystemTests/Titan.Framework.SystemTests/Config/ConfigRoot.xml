@@ -9,12 +9,7 @@
   </env>
 
   <modules>
-    <!--This section contains Modules to be loaded to the appdomain-->
     <module Type="Saturn72.Module.Ioc.Autofac.AutofacModule, Saturn72.Module.Ioc.Autofac" Active="true" StartupOrder="10" StopOrder="100"/>
-    <!--
-    <module Type="Saturn72.Module.Owin.OwinModule, Saturn72.Module.Owin" Active="true" StartupOrder="20" StopOrder="20"/>
-    <module Type="Saturn72.Module.Ioc.Autofac.Owin.AutofacOwinModule, Saturn72.Module.Ioc.Autofac.Owin" Active="true" StartupOrder="30" StopOrder="100"/>
-    -->
   </modules>
 
   <!--this element contains the configuration mapping file relative path-->

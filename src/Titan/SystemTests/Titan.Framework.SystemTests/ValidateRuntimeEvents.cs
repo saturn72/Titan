@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using Titan.Framework.Runtime;
+using Titan.Framework.SystemTests.TestStepOptions;
 using Titan.Framework.Testing;
 
 namespace Titan.Framework.SystemTests
@@ -11,30 +12,41 @@ namespace Titan.Framework.SystemTests
         [Test]
         public void SimpleTest()
         {
-            throw new NotImplementedException();
-            var tl = new SimpleTestLogic();
+            var tl = new TestLogic();
             tl.SimpleFlow();
-        }
 
-        [TearDown]
-        public void TearDown()
-        {
-            //Add teardown method that checks that all post test steps were raised    
+            //need to ise autofac module as this component is responsible on activating the interceptors
             throw new NotImplementedException();
         }
     }
 
-    public class SimpleTestLogic : TestBase
+    public class TestLogic : TestBase
     {
         public virtual IEnumerable<ExecutionResult> SimpleFlow()
         {
-            //create event listener and see that all events were raised
-            throw new NotImplementedException("The test was not implemented");
+            var testSteps = new TestSteps();
+
+            return new List<ExecutionResult>
+            {
+                testSteps.TestStep1(new TestStep1Options {Value = "test-step1-value"}),
+
+                testSteps.TestStep2(new TestStep2Options {Value = "test-step2-value"}),
+
+            };
+        }
+    }
+
+    public class TestSteps
+    {
+        public virtual ExecutionResult TestStep1(TestStep1Options options)
+        {
+            return new ExecutionResult("Test step1", options);
         }
 
-        public IEnumerable<ExecutionResult> ShouldThrowNonVirtualException()
+        public virtual ExecutionResult TestStep2(TestStep2Options options)
         {
-            throw new NotImplementedException();
+            return new ExecutionResult("Test step2", options);
         }
+
     }
 }
