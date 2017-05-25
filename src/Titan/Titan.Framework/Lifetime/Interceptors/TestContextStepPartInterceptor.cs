@@ -42,15 +42,15 @@ namespace Titan.Framework.Lifetime.Interceptors
         {
             var step = TestSuiteContext.Instance.TestContexts.Last().TestContextSteps.Last();
 
-            var tcsp = TestLifetimeManager.CreateTestContextStepPart(name, step, parameters);
-            TestLifetimeManager.StartTestContextStepPartExecution(tcsp);
+            var tcsp = TestLifetimePublisher.CreateTestContextStepPart(name, step, parameters);
+            TestLifetimePublisher.StartTestContextStepPartExecution(tcsp);
             return tcsp;
         }
 
         private void EndTestContextStepPartExecution(TestContextStepPart stepPart)
         {
-            TestLifetimeManager.EndTestContextStepPartExecution(stepPart);
-            TestLifetimeManager.DisposeTestContextStepPart(stepPart);
+            TestLifetimePublisher.EndTestContextStepPartExecution(stepPart);
+            TestLifetimePublisher.DisposeTestContextStepPart(stepPart);
         }
     }
 }

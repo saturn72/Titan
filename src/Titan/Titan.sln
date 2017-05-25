@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests.Throws6", "SystemTests\Titan.Framework.SystemTests.Throws6\Titan.Framework.SystemTests.Throws6.csproj", "{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests.ThrowsOnMissingCommanders", "SystemTests\Titan.Framework.SystemTests.ThrowsOnMissingCommanders\Titan.Framework.SystemTests.ThrowsOnMissingCommanders.csproj", "{B467A68D-4702-4D5E-8EA1-82E014A36706}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B467A68D-4702-4D5E-8EA1-82E014A36706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B467A68D-4702-4D5E-8EA1-82E014A36706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B467A68D-4702-4D5E-8EA1-82E014A36706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B467A68D-4702-4D5E-8EA1-82E014A36706}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,5 +151,6 @@ Global
 		{15C1B963-2742-4DC8-9073-831DC1FDFC50} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
 		{38F22E95-BE7B-423D-9753-3D755AB69196} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
 		{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
+		{B467A68D-4702-4D5E-8EA1-82E014A36706} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
 	EndGlobalSection
 EndGlobal

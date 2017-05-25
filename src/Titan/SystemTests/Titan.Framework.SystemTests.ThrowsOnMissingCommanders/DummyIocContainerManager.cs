@@ -2,14 +2,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Saturn72.Core.Infrastructure.DependencyManagement;
 
 #endregion
 
-namespace Titan.Framework.SystemTests
+namespace Titan.Framework.SystemTests.ThrowsOnMissingCommanders
 {
-    public class SimpleIocContainerManager : IIocContainerManager
+    public class DummyIocContainerManager : IIocContainerManager
     {
         private readonly IDictionary<Type, ICollection<Func<object>>> _registrations =
             new Dictionary<Type, ICollection<Func<object>>>();
@@ -18,7 +17,7 @@ namespace Titan.Framework.SystemTests
 
         public object Resolve(Type type, object key = null)
         {
-            return _registrations[type].First()();
+            throw new NotImplementedException();
         }
 
 
@@ -41,7 +40,6 @@ namespace Titan.Framework.SystemTests
 
         public void RegisterTypes(LifeCycle lifeCycle, params Type[] serviceImplTypes)
         {
-            throw new NotImplementedException();
         }
 
         public void RegisterType(Type serviceImplType, LifeCycle lifeCycle = LifeCycle.PerDependency,
@@ -51,7 +49,6 @@ namespace Titan.Framework.SystemTests
 
         public void RegisterType<TServiceImpl>(LifeCycle lifeCycle = LifeCycle.PerDependency)
         {
-            throw new NotImplementedException();
         }
 
         public IocRegistrationRecord RegisterType(Type serviceImplType, Type serviceType, LifeCycle lifecycle,

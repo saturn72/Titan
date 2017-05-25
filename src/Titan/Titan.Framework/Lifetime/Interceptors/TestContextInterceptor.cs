@@ -44,19 +44,19 @@ namespace Titan.Framework.Lifetime.Interceptors
 
         private static void EndTestContextExecution(TestContext testContext)
         {
-            TestLifetimeManager.EndTestContextExecution(testContext);
-            TestLifetimeManager.DisposeTestContext(testContext);
+            TestLifetimePublisher.EndTestContextExecution(testContext);
+            TestLifetimePublisher.DisposeTestContext(testContext);
         }
 
         private static TestContext StartTestExecution(string testName, string parameters)
         {
             var testSuiteContext = TestSuiteContext.Instance;
             if (testSuiteContext.ExecutionStartedOnUtc == default(DateTime))
-                TestLifetimeManager.StartTestSuiteContextExecution();
+                TestLifetimePublisher.StartTestSuiteContextExecution();
 
             //TODO: get test tags (categories) using testName
-            var tc = TestLifetimeManager.CreateTestContext(testName, parameters, null, testSuiteContext);
-            TestLifetimeManager.StartTestContextExecution(tc);
+            var tc = TestLifetimePublisher.CreateTestContext(testName, parameters, null, testSuiteContext);
+            TestLifetimePublisher.StartTestContextExecution(tc);
             return tc;
         }
     }

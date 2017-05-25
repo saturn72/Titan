@@ -7,6 +7,12 @@ using Castle.DynamicProxy;
 using Saturn72.Core.Configuration;
 using Saturn72.Core.Infrastructure.AppDomainManagement;
 using Saturn72.Core.Infrastructure.DependencyManagement;
+using Saturn72.Core.Logging;
+using Saturn72.Core.Services.Events;
+using Saturn72.Core.Services.Extensibility;
+using Saturn72.Core.Services.Impl.Events;
+using Saturn72.Core.Services.Impl.Extensibility;
+using Saturn72.Core.Services.Impl.Logging;
 using Saturn72.Extensions;
 using Titan.Framework.CommandAndQuery;
 using Titan.Framework.Exceptions;
@@ -21,24 +27,45 @@ namespace Titan.Framework.Infrastructure
 
         public Action<IIocRegistrator> RegistrationLogic(ITypeFinder typeFinder, Saturn72Config config)
         {
-            return reg => { RegisterInterceptors(reg, typeFinder); };
+            return reg =>
+            {
+                RegisterInterceptors(reg, typeFinder);
+                RegisterPubSubComponents(reg, typeFinder);
+                reg.RegisterType<PluginService, IPluginService>(LifeCycle.PerDependency);
+                reg.RegisterType<PluginManager, IPluginManager>(LifeCycle.PerDependency);
+                reg.RegisterType<MemoryLogger, ILogger>(LifeCycle.PerDependency);
+            };
         }
 
         private void RegisterInterceptors(IIocRegistrator reg, ITypeFinder typeFinder)
         {
             reg.RegisterInstance(new TestContextInterceptor());
-            FindTypesByMethodReturnValueAndRegisterInterceptor<IEnumerable<ExecutionResult>, TestContextInterceptor>(
-                reg, typeFinder);
+            FindTypesByMethodReturnValueAndRegisterInterceptor<IEnumerable<ExecutionResult>, TestContextInterceptor>(reg, typeFinder);
 
             reg.RegisterInstance(new TestContextStepInterceptor());
-            FindTypesByMethodReturnValueAndRegisterInterceptor<ExecutionResult, TestContextStepInterceptor>(reg,
-                typeFinder);
+            FindTypesByMethodReturnValueAndRegisterInterceptor<ExecutionResult, TestContextStepInterceptor>(reg, typeFinder);
 
+            RegisterCommanders(reg, typeFinder);
+        }
+
+        private void RegisterCommanders(IIocRegistrator reg, ITypeFinder typeFinder)
+        {
             reg.RegisterInstance(new TestStepPartInterceptor());
 
             var commanderTypes = typeFinder.FindClassesOfType<ICommander>();
-            commanderTypes.ForEachItem(
-                c => reg.RegisterType(c, LifeCycle.PerDependency, new[] {typeof(TestStepPartInterceptor)}));
+            if(!commanderTypes.Any())
+                throw new AutomationException("Failed to find commander implementors. Please register commanders");
+
+            foreach (var ct in commanderTypes)
+            {
+                var allInterfaces = ct.GetInterfaces();
+                var firstLevelCommanderInterfaces = allInterfaces.Except
+                    (allInterfaces.SelectMany(t => t.GetInterfaces()))
+                    .Where(t => typeof(ICommander).IsAssignableFrom(t));
+
+                firstLevelCommanderInterfaces.ForEachItem(flci =>
+                    reg.RegisterType(ct, flci, LifeCycle.PerDependency,interceptorTypes: new[] {typeof(TestStepPartInterceptor)}));
+            }
         }
 
         private void FindTypesByMethodReturnValueAndRegisterInterceptor<TReturned, TInterceptor>(IIocRegistrator reg,
@@ -113,6 +140,32 @@ namespace Titan.Framework.Infrastructure
 
             return left.Name == right.Name && left.ReturnType == right.ReturnType
                    && sameSignatureFunc(left.GetParameters(), right.GetParameters());
+        }
+
+        private void RegisterPubSubComponents(IIocRegistrator reg, ITypeFinder typeFinder)
+        {
+            reg.RegisterType<EventPublisher, IEventPublisher>(LifeCycle.SingleInstance);
+            reg.RegisterType<SubscriptionService, ISubscriptionService>(LifeCycle.SingleInstance);
+
+            RegisterSubscribersByType(reg, typeFinder, typeof(IEventSubscriber<>));
+            RegisterSubscribersByType(reg, typeFinder, typeof(IEventAsyncSubscriber<>));
+        }
+
+        private void RegisterSubscribersByType(IIocRegistrator registrator, ITypeFinder typeFinder,
+            Type subscriberType)
+        {
+            var consumerTypes = typeFinder.FindClassesOfType(subscriberType).ToArray();
+            foreach (var consumer in consumerTypes)
+            {
+                var services = consumer.FindInterfaces((type, criteria) =>
+                {
+                    var isMatch = type.IsGenericType &&
+                                  ((Type)criteria).IsAssignableFrom(type.GetGenericTypeDefinition());
+                    return isMatch;
+                }, subscriberType);
+
+                registrator.RegisterType(consumer, services, LifeCycle.PerLifetime);
+            }
         }
     }
 }

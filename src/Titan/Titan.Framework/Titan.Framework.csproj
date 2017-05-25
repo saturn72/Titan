@@ -70,7 +70,6 @@
     <Compile Include="Lifetime\Interceptors\TestContextInterceptor.cs" />
     <Compile Include="Lifetime\Interceptors\TestContextStepInterceptor.cs" />
     <Compile Include="Lifetime\Interceptors\TestContextStepPartInterceptor.cs" />
-    <Compile Include="Lifetime\TestLifetimeManager.cs" />
     <Compile Include="Lifetime\TestLifetimePublisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testing\TestStepOptionsBase.cs" />
@@ -91,6 +90,10 @@
     <ProjectReference Include="..\..\..\submodules\saturn72\src\Common\Saturn72.Common\Saturn72.Common.csproj">
       <Project>{6DE3E33E-0B13-4C57-8871-C83E1EEB8470}</Project>
       <Name>Saturn72.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\submodules\saturn72\src\Core\Saturn72.Core.Services.Impl\Saturn72.Core.Services.Impl.csproj">
+      <Project>{BA702041-080D-459A-BCD1-37875D92C626}</Project>
+      <Name>Saturn72.Core.Services.Impl</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\submodules\saturn72\src\Core\Saturn72.Core.Services\Saturn72.Core.Services.csproj">
       <Project>{D92341E7-6B28-4CDC-A024-A204D0ED670E}</Project>
