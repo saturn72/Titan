@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#add").click(function () {
+                var x = $("#x").val();
+                var y = $("#y").val();
+
+                var reqUri = "http://localhost:9000/api/calculator/add/" + x + "/" + y;
+
+                $.ajax({
+                    type: 'POST',
+                    url: reqUri,
+                    success: function (response) {
+                        $("#add-result").text(response.X + " + " + response.Y + " = " + response.Result);
+                    }
+                });
+                
+            });
+        });
+    </script>
+
+    <p>Insert <b>POSITIVE</b> values and click add to see the result</p>
+    X <input id="x" type="number" name="x" min="0"><br>
+    Y <input id="y" type="number" name="y" min="0"><br>
+    <button id="add">Add</button><br />
+    <h1>
+        <label id="add-result"></label>
+    </h1>
+</body>
+</html>
