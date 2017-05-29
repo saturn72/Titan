@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework", "Titan.Framework\Titan.Framework.csproj", "{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}"
 EndProject
@@ -46,6 +46,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests.Throws6", "SystemTests\Titan.Framework.SystemTests.Throws6\Titan.Framework.SystemTests.Throws6.csproj", "{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests.ThrowsOnMissingCommanders", "SystemTests\Titan.Framework.SystemTests.ThrowsOnMissingCommanders\Titan.Framework.SystemTests.ThrowsOnMissingCommanders.csproj", "{B467A68D-4702-4D5E-8EA1-82E014A36706}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SUT", "SUT", "{4E7B9AC1-32B4-475E-BED0-60727946603A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.WebApi.Host", "SUT\Calculator.WebApi.Host\Calculator.WebApi.Host.csproj", "{E984BE1E-E9CE-42B0-B6B0-24526E43B58A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Test.Framework", "SUT\Calculator.Test.Framework\Calculator.Test.Framework.csproj", "{C6179FC6-A6B9-46D1-B10B-3F51322D047C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicTests", "SUT\BasicTests\BasicTests.csproj", "{F6A5E5C8-67AB-4013-A499-5120FB93BC28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +137,18 @@ Global
 		{B467A68D-4702-4D5E-8EA1-82E014A36706}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B467A68D-4702-4D5E-8EA1-82E014A36706}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B467A68D-4702-4D5E-8EA1-82E014A36706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E984BE1E-E9CE-42B0-B6B0-24526E43B58A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E984BE1E-E9CE-42B0-B6B0-24526E43B58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E984BE1E-E9CE-42B0-B6B0-24526E43B58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E984BE1E-E9CE-42B0-B6B0-24526E43B58A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6179FC6-A6B9-46D1-B10B-3F51322D047C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6179FC6-A6B9-46D1-B10B-3F51322D047C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6179FC6-A6B9-46D1-B10B-3F51322D047C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6179FC6-A6B9-46D1-B10B-3F51322D047C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6A5E5C8-67AB-4013-A499-5120FB93BC28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A5E5C8-67AB-4013-A499-5120FB93BC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A5E5C8-67AB-4013-A499-5120FB93BC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A5E5C8-67AB-4013-A499-5120FB93BC28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -152,5 +172,8 @@ Global
 		{38F22E95-BE7B-423D-9753-3D755AB69196} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
 		{EF3EE10A-DDC0-4609-B7C7-D8408FCAC067} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
 		{B467A68D-4702-4D5E-8EA1-82E014A36706} = {82057471-4AB9-4CA1-BA1A-3CCF29B68056}
+		{E984BE1E-E9CE-42B0-B6B0-24526E43B58A} = {4E7B9AC1-32B4-475E-BED0-60727946603A}
+		{C6179FC6-A6B9-46D1-B10B-3F51322D047C} = {4E7B9AC1-32B4-475E-BED0-60727946603A}
+		{F6A5E5C8-67AB-4013-A499-5120FB93BC28} = {4E7B9AC1-32B4-475E-BED0-60727946603A}
 	EndGlobalSection
 EndGlobal

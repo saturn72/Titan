@@ -55,7 +55,7 @@ namespace Titan.Framework.SystemTests.Throws6
             object key = null,
             Type[] interceptorTypes = null)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public void Register(IEnumerable<Action<IIocRegistrator>> registerActions)

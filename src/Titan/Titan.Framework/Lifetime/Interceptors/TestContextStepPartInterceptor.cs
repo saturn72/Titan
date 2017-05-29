@@ -38,7 +38,7 @@ namespace Titan.Framework.Lifetime.Interceptors
             throw ex;
         }
 
-        private TestContextStepPart StartTestContextStepPartExecution(string name, string parameters)
+        private static TestContextStepPart StartTestContextStepPartExecution(string name, string parameters)
         {
             var step = TestSuiteContext.Instance.TestContexts.Last().TestContextSteps.Last();
 

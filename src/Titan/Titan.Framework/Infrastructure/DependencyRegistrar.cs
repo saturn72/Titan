@@ -40,10 +40,12 @@ namespace Titan.Framework.Infrastructure
         private void RegisterInterceptors(IIocRegistrator reg, ITypeFinder typeFinder)
         {
             reg.RegisterInstance(new TestContextInterceptor());
-            FindTypesByMethodReturnValueAndRegisterInterceptor<IEnumerable<ExecutionResult>, TestContextInterceptor>(reg, typeFinder);
+            FindTypesByMethodReturnValueAndRegisterInterceptor<IEnumerable<ExecutionResult>, TestContextInterceptor>(
+                reg, typeFinder);
 
             reg.RegisterInstance(new TestContextStepInterceptor());
-            FindTypesByMethodReturnValueAndRegisterInterceptor<ExecutionResult, TestContextStepInterceptor>(reg, typeFinder);
+            FindTypesByMethodReturnValueAndRegisterInterceptor<ExecutionResult, TestContextStepInterceptor>(reg,
+                typeFinder);
 
             RegisterCommanders(reg, typeFinder);
         }
@@ -53,19 +55,25 @@ namespace Titan.Framework.Infrastructure
             reg.RegisterInstance(new TestStepPartInterceptor());
 
             var commanderTypes = typeFinder.FindClassesOfType<ICommander>();
-            if(!commanderTypes.Any())
+            if (!commanderTypes.Any())
                 throw new AutomationException("Failed to find commander implementors. Please register commanders");
 
             foreach (var ct in commanderTypes)
             {
-                var allInterfaces = ct.GetInterfaces();
-                var firstLevelCommanderInterfaces = allInterfaces.Except
-                    (allInterfaces.SelectMany(t => t.GetInterfaces()))
+                var firstLevelCommanderInterfaces = GetFirstLevelInterfaces(ct)
                     .Where(t => typeof(ICommander).IsAssignableFrom(t));
 
                 firstLevelCommanderInterfaces.ForEachItem(flci =>
-                    reg.RegisterType(ct, flci, LifeCycle.PerDependency,interceptorTypes: new[] {typeof(TestStepPartInterceptor)}));
+                    reg.RegisterType(ct, flci, LifeCycle.PerDependency,
+                        interceptorTypes: new[] {typeof(TestStepPartInterceptor)}));
             }
+        }
+
+        private static IEnumerable<Type> GetFirstLevelInterfaces(Type type)
+        {
+            var allInterfaces = type.GetInterfaces();
+            return allInterfaces.Except
+                (allInterfaces.SelectMany(t => t.GetInterfaces()));
         }
 
         private void FindTypesByMethodReturnValueAndRegisterInterceptor<TReturned, TInterceptor>(IIocRegistrator reg,
@@ -80,9 +88,17 @@ namespace Titan.Framework.Infrastructure
 
             ValidateThatAllMethodsAreVirtualOrImplementInterface(methodInfos);
             var declarTypes = methodInfos.Select(bi => bi.DeclaringType).Distinct();
-            var interceptorTypes = new[] { typeof(TInterceptor) };
+            var interceptorTypes = new[] {typeof(TInterceptor)};
+
             declarTypes.ForEachItem(dt =>
-                reg.RegisterType(dt, LifeCycle.PerDependency, interceptorTypes));
+            {
+                var firstLevelInterfaces = GetFirstLevelInterfaces(dt);
+                if (firstLevelInterfaces.Any())
+                    foreach (var fli in firstLevelInterfaces)
+                        reg.RegisterType(dt, fli, LifeCycle.PerDependency, interceptorTypes);
+                else
+                    reg.RegisterType(dt, LifeCycle.PerDependency, interceptorTypes);
+            });
         }
 
         private static IEnumerable<MethodInfo> GetMethodInfos<TReturned>(ITypeFinder typeFinder)
@@ -160,7 +176,7 @@ namespace Titan.Framework.Infrastructure
                 var services = consumer.FindInterfaces((type, criteria) =>
                 {
                     var isMatch = type.IsGenericType &&
-                                  ((Type)criteria).IsAssignableFrom(type.GetGenericTypeDefinition());
+                                  ((Type) criteria).IsAssignableFrom(type.GetGenericTypeDefinition());
                     return isMatch;
                 }, subscriberType);
 

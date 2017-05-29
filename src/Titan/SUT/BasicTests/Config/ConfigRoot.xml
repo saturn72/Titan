@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <assemblies>
+    <assembly Path="Calculator.Test.Framework.dll"/>
+  </assemblies>
+  <env>
+    <!--This section contains the environment data-->
+    <modules Directory ="Modules" ShadowCopyDirectory="bin" DeleteShadowDirectoryOnStartup="True"/>
+    <plugins Directory ="Plugins" ShadowCopyDirectory="bin" DeleteShadowDirectoryOnStartup="True"/>
+  </env>
+
+  <modules>
+    <module Type="Saturn72.Module.Ioc.Autofac.AutofacModule, Saturn72.Module.Ioc.Autofac" Active="true" StartupOrder="10" StopOrder="100"/>
+  </modules>
+
+  <!--this element contains the configuration mapping file relative path-->
+  <configMaps Path="Config\ConfigMaps.xml"/>
+</config>
