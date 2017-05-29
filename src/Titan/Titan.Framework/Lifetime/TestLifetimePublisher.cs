@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 using Saturn72.Core.Infrastructure;
 using Saturn72.Core.Services.Events;
 using Titan.Framework.Lifetime.Events;
@@ -41,10 +43,10 @@ namespace Titan.Framework.Lifetime
 
         #region TestContext
 
-        internal static TestContext CreateTestContext(string name, string parameters, string[] tags,
+        internal static TestContext CreateTestContext(MethodInfo methodInfo, IEnumerable<object> parameters, string[] tags,
             TestSuiteContext testSuiteContext)
         {
-            var tc = new TestContext(name, parameters, tags, testSuiteContext);
+            var tc = new TestContext(methodInfo, parameters, tags, testSuiteContext);
             EventPublisher.Publish(new OnTestContextCreatedEvent(tc));
             return tc;
         }
@@ -71,9 +73,9 @@ namespace Titan.Framework.Lifetime
 
         #region TestContextStep
 
-        internal static TestContextStep CreateTestContextStep(string name, TestContext testContext, string parameters)
+        internal static TestContextStep CreateTestContextStep(TestContext testContext, object[] parameters, MethodInfo methodInfo)
         {
-            var tcs = new TestContextStep(name, testContext, parameters);
+            var tcs = new TestContextStep(testContext, methodInfo, parameters);
             testContext.TestContextSteps.Add(tcs);
 
             EventPublisher.Publish(new OnTestContextStepCreatedEvent(tcs));
@@ -102,10 +104,10 @@ namespace Titan.Framework.Lifetime
 
         #region TestContextStepPart
 
-        internal static TestContextStepPart CreateTestContextStepPart(string name, TestContextStep step,
-            string parameters)
+        internal static TestContextStepPart CreateTestContextStepPart(TestContextStep step, MethodInfo methodInfo,
+            IEnumerable<object> parameters)
         {
-            var tcsp = new TestContextStepPart(name, step, parameters);
+            var tcsp = new TestContextStepPart(step,methodInfo, parameters);
             step.TestContextStepParts.Add(tcsp);
 
             EventPublisher.Publish(new OnTestContextStepPartCreatedEvent(tcsp));

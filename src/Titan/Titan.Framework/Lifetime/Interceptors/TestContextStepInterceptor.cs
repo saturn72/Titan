@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using Castle.DynamicProxy;
 using Saturn72.Extensions;
 using Titan.Framework.Exceptions;
@@ -12,10 +13,8 @@ namespace Titan.Framework.Lifetime.Interceptors
     {
         public void Intercept(IInvocation invocation)
         {
-            var parameters = InvocationUtil.ExtractMethodParameters(invocation);
-
             var testStepName = invocation.Method.Name;
-            var tc = StartTestContextStepExecution(testStepName, parameters);
+            var tc = StartTestContextStepExecution(testStepName, invocation.Arguments, invocation.Method);
 
             try
             {
@@ -34,7 +33,7 @@ namespace Titan.Framework.Lifetime.Interceptors
                 HandleErrors(tc);
         }
 
-        private static void HandleErrors(TestContextStep tc)
+        private void HandleErrors(TestContextStep tc)
         {
             var tcException = tc.Exception;
             var methodName = tc.Name;
@@ -70,17 +69,17 @@ namespace Titan.Framework.Lifetime.Interceptors
             }
         }
 
-        private static TestContextStep StartTestContextStepExecution(string testStepName, string parameters)
+        private TestContextStep StartTestContextStepExecution(string testStepName, object[] parameters, MethodInfo methodInfo)
         {
             var testContext = TestSuiteContext.Instance.TestContexts.Last();
             Guard.NotNull(testContext);
 
-            var tc = TestLifetimePublisher.CreateTestContextStep(testStepName, testContext, parameters);
+            var tc = TestLifetimePublisher.CreateTestContextStep(testContext, parameters, methodInfo);
             TestLifetimePublisher.StartTestContextStepExecution(tc);
             return tc;
         }
 
-        private static void EndTestContextStepExecution(TestContextStep step)
+        private void EndTestContextStepExecution(TestContextStep step)
         {
             TestLifetimePublisher.EndTestContextStepExecution(step);
             TestLifetimePublisher.DisposeTestContextStep(step);

@@ -14,8 +14,9 @@ namespace Titan.Framework.Tests.Testing
             TestSuiteContext.Create();
             var tsc = TestSuiteContext.Instance;
             const string tcName = "Name";
-            const string parameters = "para,etsr";
-            var tc = new Titan.Framework.Testing.TestContext(tcName,parameters, null,  tsc);
+            var mi = GetType().GetMethod("TestSuiteContext_CurrentTestContext");
+            var parameters = new[] {"para,etsr"};
+            var tc = new Titan.Framework.Testing.TestContext(mi,parameters, null,  tsc);
             tsc.CurrentTestContext().ShouldBe(tc);
         }
     }

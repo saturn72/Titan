@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Threading;
 using Castle.DynamicProxy;
 using Saturn72.Extensions;
@@ -13,8 +15,7 @@ namespace Titan.Framework.Lifetime.Interceptors
         {
             Exception innerException = null;
             var parameters = InvocationUtil.ExtractMethodParameters(invocation);
-            var methodName = invocation.Method.Name;
-            var tc = StartTestExecution(methodName, parameters);
+            var tc = StartTestExecution(invocation.Method, invocation.Arguments);
 
             try
             {
@@ -28,7 +29,7 @@ namespace Titan.Framework.Lifetime.Interceptors
             {
                 if (invocation.Method.ReturnType != typeof(void) && invocation.ReturnValue.IsNull() || innerException.NotNull())
                 {
-                    var exMsg = "Fail to execution test method {0} with parameters {1}".AsFormat(methodName, parameters);
+                    var exMsg = "Fail to execution test method {0} with parameters {1}".AsFormat(invocation.Method.Name, parameters);
                     tc.Exception = innerException.IsNull()
                         ? new AutomationException(exMsg)
                         : new AutomationException(exMsg, innerException);
@@ -48,14 +49,14 @@ namespace Titan.Framework.Lifetime.Interceptors
             TestLifetimePublisher.DisposeTestContext(testContext);
         }
 
-        private static TestContext StartTestExecution(string testName, string parameters)
+        private static TestContext StartTestExecution(MethodInfo methodInfo, IEnumerable<object> parameters)
         {
             var testSuiteContext = TestSuiteContext.Instance;
             if (testSuiteContext.ExecutionStartedOnUtc == default(DateTime))
                 TestLifetimePublisher.StartTestSuiteContextExecution();
 
-            //TODO: get test tags (categories) using testName
-            var tc = TestLifetimePublisher.CreateTestContext(testName, parameters, null, testSuiteContext);
+            //TODO: get test tags (categories) using methodInfo
+            var tc = TestLifetimePublisher.CreateTestContext(methodInfo, parameters, null, testSuiteContext);
             TestLifetimePublisher.StartTestContextExecution(tc);
             return tc;
         }

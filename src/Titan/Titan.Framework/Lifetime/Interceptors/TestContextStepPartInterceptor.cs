@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Castle.DynamicProxy;
 using Saturn72.Extensions;
 using Titan.Framework.Exceptions;
@@ -13,7 +15,7 @@ namespace Titan.Framework.Lifetime.Interceptors
         {
             var parameters = InvocationUtil.ExtractMethodParameters(invocation);
 
-            var tcsp = StartTestContextStepPartExecution(invocation.Method.Name, parameters);
+            var tcsp = StartTestContextStepPartExecution(invocation.Method, invocation.Arguments);
             try
             {
                 invocation.Proceed();
@@ -38,11 +40,11 @@ namespace Titan.Framework.Lifetime.Interceptors
             throw ex;
         }
 
-        private static TestContextStepPart StartTestContextStepPartExecution(string name, string parameters)
+        private static TestContextStepPart StartTestContextStepPartExecution(MethodInfo methodInfo, IEnumerable<object> parameters)
         {
             var step = TestSuiteContext.Instance.TestContexts.Last().TestContextSteps.Last();
 
-            var tcsp = TestLifetimePublisher.CreateTestContextStepPart(name, step, parameters);
+            var tcsp = TestLifetimePublisher.CreateTestContextStepPart(step, methodInfo,parameters);
             TestLifetimePublisher.StartTestContextStepPartExecution(tcsp);
             return tcsp;
         }

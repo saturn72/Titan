@@ -15,14 +15,14 @@ namespace Titan.Framework.Tests.Testing
         {
             if (TestSuiteContext.Instance == null)
                 TestSuiteContext.Create();
-            const string parameters = "invocationParams";
+            var parameters = new[] { "invocationParams"};
+            var mi = GetType().GetMethod("TestContextStep_Create");
 
-            var tc = new TestContext("name", parameters, null, TestSuiteContext.Instance);
+            var tc = new TestContext(mi, parameters, null, TestSuiteContext.Instance);
 
-            const string testStepName = "testStepName";
-            var tcs = new TestContextStep(testStepName, tc, parameters);
+            var tcs = new TestContextStep(tc,mi,  parameters);
 
-            tcs.Name.ShouldBe(testStepName);
+            tcs.Name.ShouldBe(mi.Name);
             tcs.Parameters.ShouldBe(parameters);
             tcs.TestContext.ShouldBe(tc);
             tcs.ExecutionId.IsNullOrEmpty().ShouldBeFalse();

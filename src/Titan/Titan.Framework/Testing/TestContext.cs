@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Titan.Framework.Testing
 {
@@ -8,45 +9,35 @@ namespace Titan.Framework.Testing
     {
         #region ctor
 
-        public TestContext(string name, string parameters, IEnumerable<string> tags, TestSuiteContext testSuiteContext)
+        public TestContext(MethodInfo methodInfo, IEnumerable<object> parameters, IEnumerable<string> tags, TestSuiteContext testSuiteContext)
         {
-            _parameters = parameters;
-            _name = name;
-            _testSuiteContext = testSuiteContext;
-            _executionId = Guid.NewGuid().ToString();
-            _createdOnUtc = DateTime.UtcNow;
-            _tags = tags;
+            MethodInfo = methodInfo;
+            Parameters = parameters;
+            Name = methodInfo.Name;
+            TestSuiteContext = testSuiteContext;
+            ExecutionId = Guid.NewGuid().ToString();
+            CreatedOnUtc = DateTime.UtcNow;
+            Tags = tags;
             testSuiteContext.TestContexts.Add(this);
         }
 
         #endregion
 
-        public string Parameters
-        {
-            get { return _parameters; }
-        }
+
 
         #region Properties
 
-        public IEnumerable<string> Tags
-        {
-            get { return _tags; }
-        }
+        public MethodInfo MethodInfo { get; }
 
-        public string Name
-        {
-            get { return _name; }
-        }
+        public IEnumerable<object> Parameters { get; }
 
-        public TestSuiteContext TestSuiteContext
-        {
-            get { return _testSuiteContext; }
-        }
+        public IEnumerable<string> Tags { get; }
 
-        public string ExecutionId
-        {
-            get { return _executionId; }
-        }
+        public string Name { get; }
+
+        public TestSuiteContext TestSuiteContext { get; }
+
+        public string ExecutionId { get; }
 
         public ICollection<TestContextStep> TestContextSteps
         {
@@ -56,11 +47,7 @@ namespace Titan.Framework.Testing
         public DateTime ExecutionStartedOnUtc { get; internal set; }
 
         public DateTime ExecutionEndedOnUtc { get; internal set; }
-
-        public DateTime CreatedOnUtc
-        {
-            get { return _createdOnUtc; }
-        }
+        public DateTime CreatedOnUtc { get; }
 
         public DateTime DisposedOnUtc { get; internal set; }
         public Exception Exception { get; internal set; }
@@ -69,13 +56,7 @@ namespace Titan.Framework.Testing
 
         #region Fields
 
-        private readonly DateTime _createdOnUtc;
-        private readonly string _executionId;
-        private readonly string _name;
-        private readonly TestSuiteContext _testSuiteContext;
         private ICollection<TestContextStep> _testContextSteps;
-        private readonly IEnumerable<string> _tags;
-        private readonly string _parameters;
 
         #endregion
     }
