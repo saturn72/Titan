@@ -69,6 +69,14 @@
       <Project>{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}</Project>
       <Name>Titan.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Titan.Common\Titan.Common.csproj">
+      <Project>{0F234AD5-6EC6-4EC0-8914-AFEAD9D445CD}</Project>
+      <Name>Titan.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Titan.Services\Titan.Services.csproj">
+      <Project>{74BE565E-F238-482C-9128-224A3277B0C1}</Project>
+      <Name>Titan.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

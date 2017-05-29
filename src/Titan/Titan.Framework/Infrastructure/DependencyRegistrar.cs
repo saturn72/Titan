@@ -14,10 +14,12 @@ using Saturn72.Core.Services.Impl.Events;
 using Saturn72.Core.Services.Impl.Extensibility;
 using Saturn72.Core.Services.Impl.Logging;
 using Saturn72.Extensions;
-using Titan.Framework.CommandAndQuery;
+using Titan.Framework.Commanders;
 using Titan.Framework.Exceptions;
 using Titan.Framework.Lifetime.Interceptors;
 using Titan.Framework.Runtime;
+using Titan.Services.Data;
+using Titan.Services.Monitor;
 
 namespace Titan.Framework.Infrastructure
 {
@@ -30,11 +32,26 @@ namespace Titan.Framework.Infrastructure
             return reg =>
             {
                 RegisterInterceptors(reg, typeFinder);
-                RegisterPubSubComponents(reg, typeFinder);
-                reg.RegisterType<PluginService, IPluginService>(LifeCycle.PerDependency);
-                reg.RegisterType<PluginManager, IPluginManager>(LifeCycle.PerDependency);
+                RegisterServices(reg, typeFinder);
+                RegisterRepositories(reg, typeFinder);
                 reg.RegisterType<MemoryLogger, ILogger>(LifeCycle.PerDependency);
             };
+        }
+
+        private void RegisterRepositories(IIocRegistrator reg, ITypeFinder typeFinder)
+        {
+            reg.RegisterType<MonitorRepository, IMonitorRepository>(LifeCycle.PerDependency);
+        }
+
+        private void RegisterServices(IIocRegistrator reg, ITypeFinder typeFinder)
+        {
+            //Extensibility
+            RegisterPubSubComponents(reg, typeFinder);
+            reg.RegisterType<PluginService, IPluginService>(LifeCycle.PerDependency);
+            reg.RegisterType<PluginManager, IPluginManager>(LifeCycle.PerDependency);
+
+            //Monitoring
+            reg.RegisterType<MonitorService, IMonitorService>(LifeCycle.PerDependency);
         }
 
         private void RegisterInterceptors(IIocRegistrator reg, ITypeFinder typeFinder)
@@ -95,7 +112,7 @@ namespace Titan.Framework.Infrastructure
                 var firstLevelInterfaces = GetFirstLevelInterfaces(dt).ToArray();
                 if (firstLevelInterfaces.Any())
                     foreach (var fli in firstLevelInterfaces)
-                        reg.RegisterType(dt, fli, LifeCycle.PerDependency,null, interceptorTypes);
+                        reg.RegisterType(dt, fli, LifeCycle.PerDependency, null, interceptorTypes);
                 else
                     reg.RegisterType(dt, LifeCycle.PerDependency, interceptorTypes);
             });

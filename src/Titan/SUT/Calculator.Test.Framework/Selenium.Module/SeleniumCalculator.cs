@@ -32,7 +32,7 @@ namespace Calculator.Test.Framework.Selenium.Module
                 return result;
 
 
-            stepResult = _commander.SetElementText("y", options.X);
+            stepResult = _commander.SetElementText("y", options.Y);
             result.ExecutionResultSteps.Add(
                 ExecutionResultStep.Build(stepResult ? ExecutionStatus.Passed : ExecutionStatus.Failed,
                     "Set Y inbox value: " + (stepResult ? "PASS" : "FAILED")));

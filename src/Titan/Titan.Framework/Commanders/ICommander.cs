@@ -1,4 +1,4 @@
-﻿namespace Titan.Framework.CommandAndQuery
+﻿namespace Titan.Framework.Commanders
 {
     /// <summary>
     /// Represents Commander

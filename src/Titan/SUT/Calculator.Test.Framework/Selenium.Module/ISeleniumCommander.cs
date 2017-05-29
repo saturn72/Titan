@@ -1,4 +1,4 @@
-﻿using Titan.Framework.CommandAndQuery;
+﻿using Titan.Framework.Commanders;
 
 namespace Calculator.Test.Framework.Selenium.Module
 {
@@ -7,5 +7,6 @@ namespace Calculator.Test.Framework.Selenium.Module
         bool GoToIndexPage();
         bool SetElementText(string elementId, object value);
         bool Click(string elementId);
+        string GetElementText(string elementId);
     }
 }

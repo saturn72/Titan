@@ -34,11 +34,16 @@ namespace Calculator.Test.Framework.Selenium.Module
 
         public bool Click(string elementId)
         {
-            var elem = Driver.FindElementById(elementId);
+            var elem = FindElementById(elementId);
             if (elem == null)
                 return false;
             elem.Click();
             return true;
+        }
+
+        public string GetElementText(string elementId)
+        {
+            return FindElementById(elementId).Text;
         }
 
         #region Utilities

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework", "Titan.Framework\Titan.Framework.csproj", "{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}"
 EndProject
@@ -54,6 +54,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Test.Framework", "SUT\Calculator.Test.Framework\Calculator.Test.Framework.csproj", "{C6179FC6-A6B9-46D1-B10B-3F51322D047C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicTests", "SUT\BasicTests\BasicTests.csproj", "{F6A5E5C8-67AB-4013-A499-5120FB93BC28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Services", "Titan.Services\Titan.Services.csproj", "{74BE565E-F238-482C-9128-224A3277B0C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Common", "Titan.Common\Titan.Common.csproj", "{0F234AD5-6EC6-4EC0-8914-AFEAD9D445CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Common.Tests", "Titan.Common.Tests\Titan.Common.Tests.csproj", "{6C5171CD-B1EE-4210-AD3D-F4A2AC084226}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -149,6 +155,18 @@ Global
 		{F6A5E5C8-67AB-4013-A499-5120FB93BC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6A5E5C8-67AB-4013-A499-5120FB93BC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6A5E5C8-67AB-4013-A499-5120FB93BC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BE565E-F238-482C-9128-224A3277B0C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BE565E-F238-482C-9128-224A3277B0C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BE565E-F238-482C-9128-224A3277B0C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BE565E-F238-482C-9128-224A3277B0C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F234AD5-6EC6-4EC0-8914-AFEAD9D445CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F234AD5-6EC6-4EC0-8914-AFEAD9D445CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F234AD5-6EC6-4EC0-8914-AFEAD9D445CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F234AD5-6EC6-4EC0-8914-AFEAD9D445CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C5171CD-B1EE-4210-AD3D-F4A2AC084226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C5171CD-B1EE-4210-AD3D-F4A2AC084226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C5171CD-B1EE-4210-AD3D-F4A2AC084226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C5171CD-B1EE-4210-AD3D-F4A2AC084226}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
