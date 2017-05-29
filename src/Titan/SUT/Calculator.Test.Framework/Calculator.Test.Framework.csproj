@@ -50,7 +50,6 @@
     <Compile Include="Selenium.Module\SeleniumCommander.cs" />
     <Compile Include="SystemBlocks\ICalculator.cs" />
     <Compile Include="Selenium.Module\SeleniumCalculator.cs" />
-    <Compile Include="Infrastructure\DependecyRegistrar.cs" />
     <Compile Include="SystemBlockOptions\AddOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testing\CalculatorTestLogic.cs" />

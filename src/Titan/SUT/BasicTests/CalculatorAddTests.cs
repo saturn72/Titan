@@ -13,8 +13,8 @@ namespace BasicTests
         [Test]
         public void AddFromGuiAndValidateViaRestMonitor()
         {
-            var cmd = AppEngine.Current.Resolve<CalculatorTestLogic>();
-            cmd.Add(new AddOptions {X = 5, Y = 11});
+            var calcApi = AppEngine.Current.Resolve<CalculatorTestLogic>();
+            calcApi.Add(new AddOptions {X = 5, Y = 11});
             throw new NotImplementedException("dddddd");
         }
     }

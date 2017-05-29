@@ -52,7 +52,7 @@ namespace Titan.Framework.Infrastructure
 
         private void RegisterCommanders(IIocRegistrator reg, ITypeFinder typeFinder)
         {
-            reg.RegisterInstance(new TestStepPartInterceptor());
+            reg.RegisterInstance(new TestContextStepPartInterceptor());
 
             var commanderTypes = typeFinder.FindClassesOfType<ICommander>();
             if (!commanderTypes.Any())
@@ -65,7 +65,7 @@ namespace Titan.Framework.Infrastructure
 
                 firstLevelCommanderInterfaces.ForEachItem(flci =>
                     reg.RegisterType(ct, flci, LifeCycle.PerDependency,
-                        interceptorTypes: new[] {typeof(TestStepPartInterceptor)}));
+                        interceptorTypes: new[] {typeof(TestContextStepPartInterceptor)}));
             }
         }
 
@@ -92,10 +92,10 @@ namespace Titan.Framework.Infrastructure
 
             declarTypes.ForEachItem(dt =>
             {
-                var firstLevelInterfaces = GetFirstLevelInterfaces(dt);
+                var firstLevelInterfaces = GetFirstLevelInterfaces(dt).ToArray();
                 if (firstLevelInterfaces.Any())
                     foreach (var fli in firstLevelInterfaces)
-                        reg.RegisterType(dt, fli, LifeCycle.PerDependency, interceptorTypes);
+                        reg.RegisterType(dt, fli, LifeCycle.PerDependency,null, interceptorTypes);
                 else
                     reg.RegisterType(dt, LifeCycle.PerDependency, interceptorTypes);
             });

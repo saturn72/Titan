@@ -7,7 +7,7 @@ using Titan.Framework.Testing;
 
 namespace Titan.Framework.Lifetime.Interceptors
 {
-    public class TestStepPartInterceptor : IInterceptor
+    public class TestContextStepPartInterceptor : IInterceptor
     {
         public void Intercept(IInvocation invocation)
         {

@@ -1,3 +1,4 @@
+using System;
 using Calculator.Test.Framework.SystemBlockOptions;
 using Calculator.Test.Framework.SystemBlocks;
 using Titan.Framework.Runtime;

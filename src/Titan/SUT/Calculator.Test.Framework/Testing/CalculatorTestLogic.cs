@@ -7,18 +7,18 @@ namespace Calculator.Test.Framework.Testing
 {
     public class CalculatorTestLogic
     {
-        private readonly ICalculator _calculatorCommander;
+        private readonly ICalculator _calculator;
 
-        public CalculatorTestLogic(ICalculator calculatorCommander)
+        public CalculatorTestLogic(ICalculator calculator)
         {
-            _calculatorCommander = calculatorCommander;
+            _calculator = calculator;
         }
 
         public virtual IEnumerable<ExecutionResult> Add(AddOptions options)
         {
             return new[]
             {
-                _calculatorCommander.Add(options)
+                _calculator.Add(options)
             };
         }
     }
