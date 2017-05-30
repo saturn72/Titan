@@ -12,23 +12,27 @@ namespace Titan.Framework.SystemTests
         IEventSubscriber<OnApplicationStopFinishEvent>,
         //Test suite events
         IEventSubscriber<OnTestSuiteCreatedEvent>,
-        IEventSubscriber<OnTestSuiteExecutionStartEvent>,
+        IEventSubscriber<OnBeforeTestSuiteExecutionStartEvent>,
+        IEventSubscriber<OnTestSuiteExecutionStartedEvent>,
         IEventSubscriber<OnTestSuiteExecutionEndEvent>,
         IEventSubscriber<OnTestSuiteDisposedEvent>,
         //Test context events
         IEventSubscriber<OnTestContextCreatedEvent>,
         IEventSubscriber<OnTestContextExecutionStartEvent>,
+        IEventSubscriber<OnBeforeTestContextExecutionStartEvent>,
         IEventSubscriber<OnTestContextExecutionEndEvent>,
         IEventSubscriber<OnTestContextDisposedEvent>,
 
         //test context step
         IEventSubscriber<OnTestContextStepCreatedEvent>,
+        IEventSubscriber<OnBeforeTestContextStepExecutionStartEvent>,
         IEventSubscriber<OnTestContextStepExecutionStartEvent>,
         IEventSubscriber<OnTestContextStepExecutionEndEvent>,
         IEventSubscriber<OnTestContextStepDisposedEvent>,
 
         //test context step part
         IEventSubscriber<OnTestContextStepPartCreatedEvent>,
+        IEventSubscriber<OnBeforeTestContextStepPartExecutionStartEvent>,
         IEventSubscriber<OnTestContextStepPartExecutionStartEvent>,
         IEventSubscriber<OnTestContextStepPartExecutionEndEvent>,
         IEventSubscriber<OnTestContextStepPartDisposedEvent>
@@ -55,6 +59,14 @@ namespace Titan.Framework.SystemTests
         public static bool OnTestContextStepPartExecutionEndEventHandler { get; set; }
         public static bool OnTestContextStepPartDisposedEventHandler { get; set; }
 
+        public static bool OnBeforeTestContextStepExecutionStartEventHandler { get; set; }
+
+        public static bool OnBeforeTestSuiteExecutionStartEventHandler { get; set; }
+
+        public static bool OnBeforeTestContextExecutionStartEventHandler { get; set; }
+
+        public static bool OnBeforeTestContextStepPartExecutionStartEventHandler { get; set; }
+
 
         public void HandleEvent(OnApplicationInitializeFinishEvent eventMessage)
         {
@@ -75,6 +87,26 @@ namespace Titan.Framework.SystemTests
         public void HandleEvent(OnApplicationStopStartEvent eventMessage)
         {
             OnApplicationStopStartEventHandler = true;
+        }
+
+        public void HandleEvent(OnBeforeTestContextExecutionStartEvent eventMessage)
+        {
+            OnBeforeTestContextExecutionStartEventHandler = true;
+        }
+
+        public void HandleEvent(OnBeforeTestContextStepExecutionStartEvent eventMessage)
+        {
+            OnBeforeTestContextStepExecutionStartEventHandler = true;
+        }
+
+        public void HandleEvent(OnBeforeTestContextStepPartExecutionStartEvent eventMessage)
+        {
+            OnBeforeTestContextStepPartExecutionStartEventHandler = true;
+        }
+
+        public void HandleEvent(OnBeforeTestSuiteExecutionStartEvent eventMessage)
+        {
+            OnBeforeTestSuiteExecutionStartEventHandler = true;
         }
 
         public void HandleEvent(OnTestContextCreatedEvent eventMessage)
@@ -152,7 +184,7 @@ namespace Titan.Framework.SystemTests
             OnTestSuiteExecutionEndEventHandler = true;
         }
 
-        public void HandleEvent(OnTestSuiteExecutionStartEvent eventMessage)
+        public void HandleEvent(OnTestSuiteExecutionStartedEvent eventMessage)
         {
             OnTestSuiteExecutionStartEventHandler = true;
         }

@@ -45,6 +45,7 @@ namespace Titan.Framework.Lifetime.Interceptors
             var step = TestSuiteContext.Instance.TestContexts.Last().TestContextSteps.Last();
 
             var tcsp = TestLifetimePublisher.CreateTestContextStepPart(step, methodInfo,parameters);
+            TestLifetimePublisher.BeforeStartTestContextStepPartExecution(tcsp);
             TestLifetimePublisher.StartTestContextStepPartExecution(tcsp);
             return tcsp;
         }

@@ -15,6 +15,8 @@ namespace BasicTests
         {
             var calcApi = AppEngine.Current.Resolve<CalculatorTestLogic>();
             calcApi.Add(new AddOptions {X = 5, Y = 11});
+
+            
             throw new NotImplementedException("dddddd");
         }
     }

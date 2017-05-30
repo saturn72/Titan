@@ -75,6 +75,7 @@ namespace Titan.Framework.Lifetime.Interceptors
             Guard.NotNull(testContext);
 
             var tc = TestLifetimePublisher.CreateTestContextStep(testContext, parameters, methodInfo);
+            TestLifetimePublisher.BeforeStartTestContextStepExecution(tc);
             TestLifetimePublisher.StartTestContextStepExecution(tc);
             return tc;
         }

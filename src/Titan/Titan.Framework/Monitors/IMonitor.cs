@@ -2,5 +2,6 @@
 {
     public interface IMonitor
     {
+        int Index { get; }
     }
 }

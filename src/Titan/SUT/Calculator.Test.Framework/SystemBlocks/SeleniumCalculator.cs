@@ -1,9 +1,8 @@
-using System;
+using Calculator.Test.Framework.Commanders;
 using Calculator.Test.Framework.SystemBlockOptions;
-using Calculator.Test.Framework.SystemBlocks;
 using Titan.Framework.Runtime;
 
-namespace Calculator.Test.Framework.Selenium.Module
+namespace Calculator.Test.Framework.SystemBlocks
 {
     public class SeleniumCalculator : ICalculator
     {

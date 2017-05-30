@@ -1,11 +1,11 @@
-using Saturn72.Core.Services.Events;
+﻿using Saturn72.Core.Services.Events;
 using Titan.Framework.Testing;
 
 namespace Titan.Framework.Lifetime.Events
 {
-    public class OnTestContextExecutionEndEvent : EventBase
+    public class OnBeforeTestContextExecutionStartEvent : EventBase
     {
-        public OnTestContextExecutionEndEvent(TestContext testContext)
+        public OnBeforeTestContextExecutionStartEvent(TestContext testContext)
         {
             TestContext = testContext;
         }

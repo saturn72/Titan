@@ -21,10 +21,15 @@ namespace Titan.Framework.Lifetime
             EventPublisher.Publish(new OnTestSuiteCreatedEvent(TestSuiteContext.Instance));
         }
 
+        internal static void BeforeTestSuiteContextExecution()
+        {
+            EventPublisher.Publish(new OnBeforeTestSuiteExecutionStartEvent(TestSuiteContext.Instance));
+        }
+
         internal static void StartTestSuiteContextExecution()
         {
             TestSuiteContext.Instance.ExecutionStartedOnUtc = DateTime.UtcNow;
-            EventPublisher.Publish(new OnTestSuiteExecutionStartEvent(TestSuiteContext.Instance));
+            EventPublisher.Publish(new OnTestSuiteExecutionStartedEvent(TestSuiteContext.Instance));
         }
 
         internal static void EndTestSuiteContextExecution()
@@ -49,6 +54,11 @@ namespace Titan.Framework.Lifetime
             var tc = new TestContext(methodInfo, parameters, tags, testSuiteContext);
             EventPublisher.Publish(new OnTestContextCreatedEvent(tc));
             return tc;
+        }
+
+        internal static void BeforeStartTestContextExecution(TestContext testContext)
+        {
+            EventPublisher.Publish(new OnBeforeTestContextExecutionStartEvent(testContext));
         }
 
         internal static void StartTestContextExecution(TestContext testContext)
@@ -88,6 +98,11 @@ namespace Titan.Framework.Lifetime
             EventPublisher.Publish(new OnTestContextStepDisposedEvent(testContextStep));
         }
 
+        internal static void BeforeStartTestContextStepExecution(TestContextStep testContextStep)
+        {
+            EventPublisher.Publish(new OnBeforeTestContextStepExecutionStartEvent(testContextStep));
+        }
+
         internal static void StartTestContextStepExecution(TestContextStep testContextStep)
         {
             testContextStep.ExecutionStartedOnUtc = DateTime.UtcNow;
@@ -118,6 +133,11 @@ namespace Titan.Framework.Lifetime
         {
             testContextStepPart.DisposedOnUtc = DateTime.UtcNow;
             EventPublisher.Publish(new OnTestContextStepPartDisposedEvent(testContextStepPart));
+        }
+
+        internal static void BeforeStartTestContextStepPartExecution(TestContextStepPart testContextStepPart)
+        {
+            EventPublisher.Publish(new OnBeforeTestContextStepPartExecutionStartEvent(testContextStepPart));
         }
 
         internal static void StartTestContextStepPartExecution(TestContextStepPart testContextStepPart)

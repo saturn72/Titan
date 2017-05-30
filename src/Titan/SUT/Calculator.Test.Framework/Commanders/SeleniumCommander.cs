@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 
-namespace Calculator.Test.Framework.Selenium.Module
+namespace Calculator.Test.Framework.Commanders
 {
     public class SeleniumCommander : ISeleniumCommander
     {

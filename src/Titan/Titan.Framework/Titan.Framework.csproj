@@ -52,6 +52,10 @@
     <Compile Include="Commanders\ICommander.cs" />
     <Compile Include="Exceptions\AutomationException.cs" />
     <Compile Include="Infrastructure\DependencyRegistrar.cs" />
+    <Compile Include="Lifetime\Events\OnBeforeTestContextExecutionStartEvent.cs" />
+    <Compile Include="Lifetime\Events\OnBeforeTestContextStepExecutionStartEvent.cs" />
+    <Compile Include="Lifetime\Events\OnBeforeTestContextStepPartExecutionStartEvent.cs" />
+    <Compile Include="Lifetime\Events\OnBeforeTestSuiteExecutionStartEvent.cs" />
     <Compile Include="Lifetime\Events\OnTestContextCreatedEvent.cs" />
     <Compile Include="Lifetime\Events\OnTestContextDisposedEvent.cs" />
     <Compile Include="Lifetime\Events\OnTestContextExecutionEndEvent.cs" />

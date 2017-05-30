@@ -1,6 +1,6 @@
 ﻿using Titan.Framework.Commanders;
 
-namespace Calculator.Test.Framework.Selenium.Module
+namespace Calculator.Test.Framework.Commanders
 {
     public interface ISeleniumCommander:ICommander
     {

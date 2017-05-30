@@ -3,9 +3,9 @@ using Titan.Framework.Testing;
 
 namespace Titan.Framework.Lifetime.Events
 {
-    public class OnTestSuiteExecutionStartedEvent : EventBase
+    public class OnBeforeTestSuiteExecutionStartEvent : EventBase
     {
-        public OnTestSuiteExecutionStartedEvent(TestSuiteContext testSuiteContext)
+        public OnBeforeTestSuiteExecutionStartEvent(TestSuiteContext testSuiteContext)
         {
             TestSuiteContext = testSuiteContext;
         }

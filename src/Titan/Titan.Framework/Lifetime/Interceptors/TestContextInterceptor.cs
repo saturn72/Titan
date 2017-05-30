@@ -15,6 +15,7 @@ namespace Titan.Framework.Lifetime.Interceptors
         {
             Exception innerException = null;
             var parameters = InvocationUtil.ExtractMethodParameters(invocation);
+            
             var tc = StartTestExecution(invocation.Method, invocation.Arguments);
 
             try
@@ -53,10 +54,15 @@ namespace Titan.Framework.Lifetime.Interceptors
         {
             var testSuiteContext = TestSuiteContext.Instance;
             if (testSuiteContext.ExecutionStartedOnUtc == default(DateTime))
+            {
+                TestLifetimePublisher.BeforeTestSuiteContextExecution();
                 TestLifetimePublisher.StartTestSuiteContextExecution();
+            }
 
             //TODO: get test tags (categories) using methodInfo
             var tc = TestLifetimePublisher.CreateTestContext(methodInfo, parameters, null, testSuiteContext);
+
+            TestLifetimePublisher.BeforeStartTestContextExecution(tc);
             TestLifetimePublisher.StartTestContextExecution(tc);
             return tc;
         }

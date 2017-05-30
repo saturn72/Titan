@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Calculator.Test.Framework.Commanders;
 using Calculator.Test.Framework.SystemBlockOptions;
 using Saturn72.Core.Services.Events;
 using Titan.Common.Domain.Monitor;
@@ -7,7 +8,7 @@ using Titan.Framework.Lifetime.Events;
 using Titan.Framework.Monitors;
 using Titan.Services.Monitor;
 
-namespace Calculator.Test.Framework.Selenium.Module
+namespace Calculator.Test.Framework.Monitors
 {
     public class WebMonitor : IMonitor,
         IEventSubscriber<OnTestContextStepExecutionEndEvent>
@@ -54,5 +55,7 @@ namespace Calculator.Test.Framework.Selenium.Module
             };
             _monitorService.AddMonitorResult(monitorResult);
         }
+
+        public int Index { get { return 100; } }
     }
 }
