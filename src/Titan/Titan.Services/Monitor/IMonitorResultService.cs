@@ -1,8 +1,8 @@
-﻿using Titan.Common.Domain.Monitor;
+using Titan.Common.Domain.Monitor;
 
 namespace Titan.Services.Monitor
 {
-    public interface IMonitorService
+    public interface IMonitorResultService
     {
         void AddMonitorResult(MonitorResult monitorResult);
     }

@@ -1,15 +1,16 @@
 ﻿using Saturn72.Core.Services.Events;
+using Saturn72.Extensions;
 using Titan.Common.Domain.Monitor;
 using Titan.Services.Data;
 
 namespace Titan.Services.Monitor
 {
-    public class MonitorService : IMonitorService
+    public class MonitorResultService : IMonitorResultService
     {
         private readonly IEventPublisher _eventPublisher;
         private readonly IMonitorRepository _monitorRepository;
 
-        public MonitorService(IMonitorRepository monitorRepository, IEventPublisher eventPublisher)
+        public MonitorResultService(IMonitorRepository monitorRepository, IEventPublisher eventPublisher)
         {
             _eventPublisher = eventPublisher;
             _monitorRepository = monitorRepository;
@@ -17,6 +18,8 @@ namespace Titan.Services.Monitor
 
         public void AddMonitorResult(MonitorResult monitorResult)
         {
+            Guard.NotNull(monitorResult);
+
             _monitorRepository.Add(monitorResult);
             _eventPublisher.DomainModelCreated(monitorResult);
         }

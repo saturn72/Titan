@@ -16,9 +16,9 @@ namespace Calculator.Test.Framework.Monitors
         private const string AddExpectedResultFormat = "{0} + {1} = {2}";
         private static IDictionary<string, Action<OnTestContextStepExecutionEndEvent>> _handlers;
         private readonly ISeleniumCommander _commander;
-        private readonly IMonitorService _monitorService;
+        private readonly IMonitorResultService _monitorService;
 
-        public WebMonitor(ISeleniumCommander commander, IMonitorService monitorService)
+        public WebMonitor(ISeleniumCommander commander, IMonitorResultService monitorService)
         {
             _commander = commander;
             _monitorService = monitorService;

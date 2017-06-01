@@ -51,7 +51,7 @@ namespace Titan.Framework.Infrastructure
             reg.RegisterType<PluginManager, IPluginManager>(LifeCycle.PerDependency);
 
             //Monitoring
-            reg.RegisterType<MonitorService, IMonitorService>(LifeCycle.PerDependency);
+            reg.RegisterType<MonitorResultService, IMonitorResultService>(LifeCycle.PerDependency);
         }
 
         private void RegisterInterceptors(IIocRegistrator reg, ITypeFinder typeFinder)

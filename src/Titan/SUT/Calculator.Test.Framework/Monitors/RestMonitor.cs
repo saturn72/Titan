@@ -20,9 +20,9 @@ namespace Calculator.Test.Framework.Monitors
         private static readonly string CalculatorResource = "api/calculator";
 
         private static IEnumerable<Expression> _beforeAddExpressions;
-        private readonly IMonitorService _monitorService;
+        private readonly IMonitorResultService _monitorService;
 
-        public RestMonitor(IMonitorService monitorService)
+        public RestMonitor(IMonitorResultService monitorService)
         {
             _monitorService = monitorService;
         }
