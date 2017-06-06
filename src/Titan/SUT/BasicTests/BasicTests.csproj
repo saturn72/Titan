@@ -232,15 +232,21 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>SET MODULES_DIR=$(ProjectDir)$(OutputPath)Modules
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>SET MODULES_DIR=$(ProjectDir)$(OutputPath)Modules
 SET SRC_DIR=$(SolutionDir)..\..\submodules\saturn72\src\Modules\bin
 SET cmd=MKLINK /J %25MODULES_DIR%25 %25SRC_DIR%25
 
-IF NOT EXIST %25MODULES_DIR%25 (
-    ECHO Create symbolic link to modules directory
-    ECHO Create symbolic link. Symbolic link Source: %25SRC_DIR%25 symbolic link destination: %25MODULES_DIR%25
-    ECHO Execute commande: %25cmd%25
-    %25cmd%25
-)</PostBuildEvent>
+IF EXIST %25MODULES_DIR%25 (
+    ECHO DELETING %25MODULES_DIR%25
+    RMDIR %25MODULES_DIR%25
+)
+ECHO Create symbolic link to modules directory
+ECHO Create symbolic link. Symbolic link Source: %25SRC_DIR%25 symbolic link destination: %25MODULES_DIR%25
+ECHO Execute commande: %25cmd%25
+%25cmd%25</PreBuildEvent>
   </PropertyGroup>
 </Project>
