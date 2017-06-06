@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Calculator.WebApi.Host.Domain;
 
@@ -54,7 +56,32 @@ namespace Calculator.WebApi.Host.Data
         private static Expression AddToDatabase(Expression expression)
         {
             ExpressionList.Add(expression);
+            Log(expression);
             return expression;
+        }
+
+        private static void Log(Expression expression)
+        {
+            const string logMsgFormat = "{0}: {1}{2}{3}={4}";
+            var msg = string.Format(logMsgFormat, DateTime.UtcNow, expression.X, GetExpressionChar(expression.Operator), expression.Y, expression.Result);
+            Trace.WriteLine(msg);
+        }
+
+        private static char GetExpressionChar(Operator op)
+        {
+            switch (op)
+            {
+                case Operator.Add:
+                    return '+';
+                case Operator.Subtract:
+                    return '-';
+                case Operator.Multuply:
+                    return '*';
+                case Operator.Divide:
+                    return '/';
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(op), op, null);
+            }
         }
 
         public static Expression Divide(int x, int y)

@@ -36,6 +36,10 @@
     <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Shouldly, Version=2.8.2.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Shouldly.2.8.2\lib\net451\Shouldly.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.AppContext.4.1.0\lib\net463\System.AppContext.dll</HintPath>
@@ -206,9 +210,17 @@
       <Project>{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC}</Project>
       <Name>Saturn72.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Titan.Common\Titan.Common.csproj">
+      <Project>{0F234AD5-6EC6-4EC0-8914-AFEAD9D445CD}</Project>
+      <Name>Titan.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Titan.Framework\Titan.Framework.csproj">
       <Project>{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}</Project>
       <Name>Titan.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Titan.Services\Titan.Services.csproj">
+      <Project>{74BE565E-F238-482C-9128-224A3277B0C1}</Project>
+      <Name>Titan.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Calculator.Test.Framework\Calculator.Test.Framework.csproj">
       <Project>{C6179FC6-A6B9-46D1-B10B-3F51322D047C}</Project>

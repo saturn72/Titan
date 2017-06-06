@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Linq.Expressions;
 using Moq;
 using NUnit.Framework;
@@ -12,6 +13,7 @@ namespace Titan.Services.Tests.Monitor
 {
     public class MonitorResultServiceTests
     {
+        #region Add
         [Test]
         public void MonitorResultService_AddMonitorResult_Throws()
         {
@@ -24,7 +26,7 @@ namespace Titan.Services.Tests.Monitor
         [Test]
         public void MonitorResultService_AddMonitorResult_Adds()
         {
-            var mRepo = new Mock<IMonitorRepository>();
+            var mRepo = new Mock<IMonitorResultRepository>();
             var ep = new Mock<IEventPublisher>();
             var srv = new MonitorResultService(mRepo.Object, ep.Object);
 
@@ -49,5 +51,37 @@ namespace Titan.Services.Tests.Monitor
                    && actual.Expected == expected.Expected
                    && actual.ExpectedType == expected.ExpectedType;
         }
+
+        #endregion Add
+
+        #region GetAllMonitorResults
+
+        [Test]
+        public void MonitorResultService_GetAllMonitorResult()
+        {
+            var repo = new Mock<IMonitorResultRepository>();
+            var collection = (MonitorResult[]) null;
+            repo.Setup(r => r.Collection).Returns(()=> collection);
+
+            var srv = new MonitorResultService(repo.Object, null);
+            srv.GetAllMonitorResult().ShouldBeNull();
+
+            collection = new MonitorResult[] { };
+            srv.GetAllMonitorResult().ShouldBeEmpty();
+
+            collection = new []
+            {
+                new MonitorResult {Id = 1 },
+                new MonitorResult {Id = 2 },
+                new MonitorResult {Id = 3 },
+            };
+            var srvColleciton = srv.GetAllMonitorResult();
+            srvColleciton.ShouldNotBeEmpty();
+            srvColleciton.Count().ShouldBe(3);
+            foreach (var c in collection)
+                srvColleciton.ShouldContain(c);
+        }
+        #endregion
     }
 }
+

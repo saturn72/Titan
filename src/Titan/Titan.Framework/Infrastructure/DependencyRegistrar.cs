@@ -14,6 +14,7 @@ using Saturn72.Core.Services.Impl.Events;
 using Saturn72.Core.Services.Impl.Extensibility;
 using Saturn72.Core.Services.Impl.Logging;
 using Saturn72.Extensions;
+using Titan.Data.Repositories;
 using Titan.Framework.Commanders;
 using Titan.Framework.Exceptions;
 using Titan.Framework.Lifetime.Interceptors;
@@ -40,7 +41,7 @@ namespace Titan.Framework.Infrastructure
 
         private void RegisterRepositories(IIocRegistrator reg, ITypeFinder typeFinder)
         {
-            reg.RegisterType<MonitorRepository, IMonitorRepository>(LifeCycle.PerDependency);
+            reg.RegisterType<MonitorResultMemoryRepository, IMonitorResultRepository>(LifeCycle.PerDependency);
         }
 
         private void RegisterServices(IIocRegistrator reg, ITypeFinder typeFinder)

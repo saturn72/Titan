@@ -63,6 +63,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Common.Tests", "Titan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Services.Tests", "Titan.Services.Tests\Titan.Services.Tests.csproj", "{1BC6B3EE-0157-482B-848F-0952BAAADCE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Data", "Titan.Data\Titan.Data.csproj", "{2A471DFD-7B01-4B86-888D-C884B1B5271C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Data.Tests", "Titan.Data.Tests\Titan.Data.Tests.csproj", "{BE09DE42-4B59-4A90-8ACC-1A410993BEC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -173,6 +177,14 @@ Global
 		{1BC6B3EE-0157-482B-848F-0952BAAADCE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BC6B3EE-0157-482B-848F-0952BAAADCE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BC6B3EE-0157-482B-848F-0952BAAADCE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A471DFD-7B01-4B86-888D-C884B1B5271C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A471DFD-7B01-4B86-888D-C884B1B5271C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A471DFD-7B01-4B86-888D-C884B1B5271C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A471DFD-7B01-4B86-888D-C884B1B5271C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE09DE42-4B59-4A90-8ACC-1A410993BEC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE09DE42-4B59-4A90-8ACC-1A410993BEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE09DE42-4B59-4A90-8ACC-1A410993BEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE09DE42-4B59-4A90-8ACC-1A410993BEC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

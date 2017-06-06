@@ -13,7 +13,7 @@ using Titan.Services.Monitor;
 namespace Calculator.Test.Framework.Monitors
 {
     public class RestMonitor : IMonitor,
-        IEventSubscriber<OnBeforeTestContextStepPartExecutionStartEvent>,
+        IEventSubscriber<OnBeforeTestContextExecutionStartEvent>,
         IEventSubscriber<OnTestContextStepExecutionEndEvent>
     {
         private static readonly string ServerUri = "http://localhost:9000/";
@@ -27,9 +27,9 @@ namespace Calculator.Test.Framework.Monitors
             _monitorService = monitorService;
         }
 
-        public void HandleEvent(OnBeforeTestContextStepPartExecutionStartEvent eventMessage)
+        public void HandleEvent(OnBeforeTestContextExecutionStartEvent eventMessage)
         {
-            if (eventMessage.TestContextStepPart.Name == "Add")
+            if (eventMessage.TestContext.Name == "Add")
                 _beforeAddExpressions = GetAllExpressions();
         }
 
@@ -37,20 +37,10 @@ namespace Calculator.Test.Framework.Monitors
         {
             var actualExpressions = GetAllExpressions();
 
-            var monitorResult = new MonitorResult
-            {
-                Actual = JsonConvert.SerializeObject(actualExpressions),
-                ActualType = actualExpressions.GetType().FullName,
-                Expected = JsonConvert.SerializeObject(_beforeAddExpressions),
-                ExpectedType = _beforeAddExpressions.GetType().FullName,
-                ComparisonTypeCode = ComparisonType.ExpectedIsSubsetOfActual.Code
-            };
-            _monitorService.AddMonitorResult(monitorResult);
-
             var actualCount = actualExpressions.Count();
             var expectedCount = _beforeAddExpressions.Count() + 1;
 
-            monitorResult = new MonitorResult
+            var monitorResult = new MonitorResult
             {
                 Actual = actualCount.ToString(),
                 ActualType = actualCount.GetType().FullName,

@@ -110,6 +110,10 @@
       <Project>{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC}</Project>
       <Name>Saturn72.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Titan.Data\Titan.Data.csproj">
+      <Project>{2A471DFD-7B01-4B86-888D-C884B1B5271C}</Project>
+      <Name>Titan.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Titan.Services\Titan.Services.csproj">
       <Project>{74BE565E-F238-482C-9128-224A3277B0C1}</Project>
       <Name>Titan.Services</Name>
