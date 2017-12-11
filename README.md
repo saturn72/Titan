@@ -1,6 +1,8 @@
 # Titan
 End-to-end test automation server
 
+### See repo's wiki for documentation and tutorials
+
 Titan is infrastructure dedicated to provide end to end infrastructure for large organizations.
 While it is not recomended to execute most of your test in end-to-end mannner, this testing methodology requires more than just 'command & query' tools.
 
