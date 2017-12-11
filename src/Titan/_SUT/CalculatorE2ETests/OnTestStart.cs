@@ -6,7 +6,7 @@ using System.Threading;
 using Calculator.Test.Framework;
 using NUnit.Framework;
 
-namespace BasicTests
+namespace CalculatorE2ETests
 {
     [SetUpFixture]
     public class OnTestStart

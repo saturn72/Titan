@@ -7,7 +7,7 @@ using Shouldly;
 using Titan.Framework.Testing;
 using Titan.Services.Monitor;
 
-namespace BasicTests
+namespace CalculatorE2ETests
 {
     [Category("calculator_sut_tests")]
     public class CalculatorAddTests : TestBase
