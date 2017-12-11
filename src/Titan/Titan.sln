@@ -47,13 +47,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework.SystemTests.ThrowsOnMissingCommanders", "SystemTests\Titan.Framework.SystemTests.ThrowsOnMissingCommanders\Titan.Framework.SystemTests.ThrowsOnMissingCommanders.csproj", "{B467A68D-4702-4D5E-8EA1-82E014A36706}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SUT", "SUT", "{4E7B9AC1-32B4-475E-BED0-60727946603A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SUT", "_SUT", "{4E7B9AC1-32B4-475E-BED0-60727946603A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.WebApi.Host", "SUT\Calculator.WebApi.Host\Calculator.WebApi.Host.csproj", "{E984BE1E-E9CE-42B0-B6B0-24526E43B58A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.WebApi.Host", "_SUT\Calculator.WebApi.Host\Calculator.WebApi.Host.csproj", "{E984BE1E-E9CE-42B0-B6B0-24526E43B58A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Test.Framework", "SUT\Calculator.Test.Framework\Calculator.Test.Framework.csproj", "{C6179FC6-A6B9-46D1-B10B-3F51322D047C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Test.Framework", "_SUT\Calculator.Test.Framework\Calculator.Test.Framework.csproj", "{C6179FC6-A6B9-46D1-B10B-3F51322D047C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicTests", "SUT\BasicTests\BasicTests.csproj", "{F6A5E5C8-67AB-4013-A499-5120FB93BC28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicTests", "_SUT\BasicTests\BasicTests.csproj", "{F6A5E5C8-67AB-4013-A499-5120FB93BC28}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Services", "Titan.Services\Titan.Services.csproj", "{74BE565E-F238-482C-9128-224A3277B0C1}"
 EndProject
