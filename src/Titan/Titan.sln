@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Framework", "Titan.Framework\Titan.Framework.csproj", "{F0EB95CE-70A7-4D62-949D-4CFF75498F2A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Saturn72", "Saturn72", "{DC499E4A-694D-4532-98C5-DEE61AA57292}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "submodules", "submodules", "{DC499E4A-694D-4532-98C5-DEE61AA57292}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn72.Core", "..\..\submodules\saturn72\src\Core\Saturn72.Core\Saturn72.Core.csproj", "{5B21A78B-9BAA-4AC2-929D-3563B9D3C9FC}"
 EndProject
@@ -211,5 +211,8 @@ Global
 		{E984BE1E-E9CE-42B0-B6B0-24526E43B58A} = {4E7B9AC1-32B4-475E-BED0-60727946603A}
 		{C6179FC6-A6B9-46D1-B10B-3F51322D047C} = {4E7B9AC1-32B4-475E-BED0-60727946603A}
 		{F6A5E5C8-67AB-4013-A499-5120FB93BC28} = {4E7B9AC1-32B4-475E-BED0-60727946603A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E6FECF3-13C4-4D7B-9D88-3C2D86271B5D}
 	EndGlobalSection
 EndGlobal
